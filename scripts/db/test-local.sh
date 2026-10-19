@@ -9,7 +9,7 @@ PORT=${PORT:-54329}
 RUN=(); [ "$(id -u)" = 0 ] && { chown postgres "$DIR"; RUN=(runuser -u postgres --); }
 cleanup() { "${RUN[@]}" "$PGBIN/pg_ctl" -D "$DIR" -m immediate stop >/dev/null 2>&1 || true; rm -rf "$DIR"; }
 trap cleanup EXIT
-"${RUN[@]}" "$PGBIN/initdb" -D "$DIR" -A trust -U postgres >/dev/null
+"${RUN[@]}" "$PGBIN/initdb" -D "$DIR" -A trust -U postgres -E UTF8 --locale=C.UTF-8 >/dev/null
 "${RUN[@]}" "$PGBIN/pg_ctl" -D "$DIR" -o "-p $PORT -k /tmp" -l "$DIR/log" start >/dev/null
 P=(psql -h /tmp -p "$PORT" -U postgres -v ON_ERROR_STOP=1 -q -X -o /dev/null)
 "${P[@]}" -c "create database portal" >/dev/null
