@@ -15,6 +15,10 @@ export function logText(entry: Pick<LogEntry, "event" | "params" | "text">, t: T
       return t("log.changeRequested", { title, text: String(p.text ?? "") });
     case "offerAccepted":
       return t("log.offerAccepted", { package: String(p.package ?? "") });
+    case "reminderSent":
+      return t("log.reminderSent");
+    case "offerSent":
+      return t("log.offerSent", { nr: String(p.nr ?? "") });
     case "fileUploaded":
       return t("log.fileUploaded", { file: String(p.file ?? "") });
     case "paid":
@@ -30,6 +34,8 @@ export function logText(entry: Pick<LogEntry, "event" | "params" | "text">, t: T
 /** Colour of the tag column, as in the prototype. */
 export function tagColor(tag: string): string {
   if (["zahlung", "freigabe", "vertrag", "start", "testlauf"].includes(tag)) return "text-success-ink";
+  if (tag === "angebot") return "text-accent";
+  if (tag === "erinnerung") return "text-danger";
   if (tag === "build" || tag === "update") return "text-accent";
   if (tag === "rechnung") return "text-danger";
   return "text-muted";

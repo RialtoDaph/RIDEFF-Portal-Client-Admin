@@ -132,6 +132,8 @@ const M = {
   'project.phaseLineShort': { de: 'Phase {num} · {phase}', en: 'Phase {num} · {phase}', id: 'Fase {num} · {phase}', from: 'Phase 03 · Bauen · live in 11 Tagen' },
   'preview.newIn': { de: 'NEU IN ENTWURF {n}', en: 'NEW IN DRAFT {n}', id: 'BARU DI DRAF {n}', from: 'NEU IN ENTWURF 2' },
   'log.offerAccepted': { de: '{package} unterschrieben', en: '{package} signed', from: 'Whole system unterschrieben' },
+  'log.reminderSent': 'Erinnerung gesendet',
+  'log.offerSent': { de: 'Angebot {nr} gesendet', proposed: true },
   'meeting.next': 'NÄCHSTER TERMIN',
   'meeting.linkBefore': 'LINK KOMMT 10 MIN VORHER',
   'package.title': 'PAKET',
@@ -337,6 +339,7 @@ const M = {
   'newClient.done.title': { de: '{org} ist angelegt.', missing: true },
   'newClient.done.sent': { de: 'EINLADUNG GESENDET AN {email}', missing: true },
   'newClient.done.notSent': { de: 'ZUGANG ANGELEGT · KEINE MAIL GESENDET', missing: true },
+  'newClient.failed': { de: 'ANLEGEN FEHLGESCHLAGEN. BITTE NOCH EINMAL VERSUCHEN.', proposed: true },
   'newClient.done.open': 'KUNDE ÖFFNEN →',
   'newClient.done.more': 'WEITEREN KUNDEN ANLEGEN',
 

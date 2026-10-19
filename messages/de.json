@@ -124,7 +124,9 @@
     "itemApproved": "{title} freigegeben",
     "paid": "{month} · {amount} · bezahlt",
     "changeRequested": "Änderung {title}: {text}",
-    "offerAccepted": "{package} unterschrieben"
+    "offerAccepted": "{package} unterschrieben",
+    "reminderSent": "Erinnerung gesendet",
+    "offerSent": "Angebot {nr} gesendet"
   },
   "preview": {
     "newIn": "NEU IN ENTWURF {n}",
@@ -373,7 +375,8 @@
       "notSent": "ZUGANG ANGELEGT · KEINE MAIL GESENDET",
       "open": "KUNDE ÖFFNEN →",
       "more": "WEITEREN KUNDEN ANLEGEN"
-    }
+    },
+    "failed": "ANLEGEN FEHLGESCHLAGEN. BITTE NOCH EINMAL VERSUCHEN."
   },
   "inbox": {
     "title": "Inbox",

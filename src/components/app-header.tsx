@@ -7,7 +7,8 @@ import { BrandMark } from "./brand-mark";
 import { ProfileMenu, type MenuUser } from "./profile-menu";
 import { ProjectPicker } from "./client/project-picker";
 
-export type HeaderTab = { href: string; label: string; exact?: boolean };
+/** `also`: further path prefixes that keep the tab active (e.g. /admin/kunden under KUNDEN). */
+export type HeaderTab = { href: string; label: string; exact?: boolean; also?: string[] };
 
 type Props = {
   address: { wide: string; narrow: string };
@@ -23,7 +24,8 @@ export function AppHeader({ address, tabs, variant, user, projects }: Props) {
   const pathname = usePathname();
   const t = useTranslations();
   const isActive = (tab: HeaderTab) =>
-    tab.exact ? pathname === tab.href : pathname === tab.href || pathname.startsWith(tab.href + "/");
+    (tab.exact ? pathname === tab.href : pathname === tab.href || pathname.startsWith(tab.href + "/")) ||
+    !!tab.also?.some((p) => pathname.startsWith(p));
 
   const openPalette = () => window.dispatchEvent(new CustomEvent("rideff:palette"));
 
@@ -35,7 +37,7 @@ export function AppHeader({ address, tabs, variant, user, projects }: Props) {
         <span className="hidden wide:inline">{address.wide}</span>
       </span>
       {projects && projects.list.length > 1 && <ProjectPicker projects={projects.list} current={projects.current} />}
-      <nav className="flex gap-[18px]">
+      <nav className="flex flex-wrap gap-x-[18px] gap-y-2">
         {tabs.map((tab) => {
           const on = isActive(tab);
           return (

@@ -111,7 +111,8 @@
   "log": {
     "fileUploaded": "{file} diunggah",
     "itemApproved": "{title} disetujui",
-    "paid": "{month} · {amount} · lunas"
+    "paid": "{month} · {amount} · lunas",
+    "reminderSent": "Pengingat terkirim"
   },
   "preview": {
     "newIn": "BARU DI DRAF {n}",
