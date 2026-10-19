@@ -1,6 +1,6 @@
 "use server";
 
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { LOCALE_COOKIE } from "@/i18n/config";
@@ -17,9 +17,13 @@ export async function sendCode(rawEmail: string): Promise<LoginResult> {
   const parsed = email.safeParse(rawEmail);
   if (!parsed.success) return { ok: false, error: "errEmail" };
   const supabase = await createClient();
+  // The email carries the code; while Supabase sends its default template it carries a link
+  // instead, which /auth/callback accepts (same browser: the PKCE verifier is in this cookie jar).
+  const h = await headers();
+  const origin = `${h.get("x-forwarded-proto") ?? "https"}://${h.get("x-forwarded-host") ?? h.get("host")}`;
   const { error } = await supabase.auth.signInWithOtp({
     email: parsed.data,
-    options: { shouldCreateUser: false },
+    options: { shouldCreateUser: false, emailRedirectTo: `${origin}/auth/callback` },
   });
   if (error?.status === 429) return { ok: false, error: "errRateLimit" };
   // Unknown addresses get the same answer, so the form does not reveal who is a client.

@@ -60,6 +60,7 @@ const M = {
   // Not in the prototype. Proposed wording, waiting for the owner's OK.
   'auth.errCodeWrong': { de: 'DER CODE STIMMT NICHT ODER IST ABGELAUFEN.', proposed: true },
   'auth.errRateLimit': { de: 'ZU VIELE VERSUCHE. BITTE KURZ WARTEN.', proposed: true },
+  'auth.errLink': { de: 'DER LINK IST ABGELAUFEN ODER WURDE IN EINEM ANDEREN BROWSER GEÖFFNET. BITTE NEU ANFORDERN.', proposed: true },
   'auth.mfa.challengeLabel': { de: '6-STELLIGER CODE', en: '6-DIGIT CODE', id: 'KODE 6 DIGIT', from: '6-STELLIGER CODE' },
 
   // ── profile menu ─────────────────────────────────────────

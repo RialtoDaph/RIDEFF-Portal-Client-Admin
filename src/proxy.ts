@@ -6,7 +6,14 @@ import { updateSession } from "@/lib/supabase/proxy";
 export async function proxy(request: NextRequest) {
   const { response, claims } = await updateSession(request);
   const { pathname } = request.nextUrl;
-  const isPublic = pathname === "/login" || pathname.startsWith("/api/webhooks/") || pathname.startsWith("/api/cron/");
+  const isPublic =
+    pathname === "/login" || pathname === "/auth/callback" || pathname.startsWith("/api/webhooks/") || pathname.startsWith("/api/cron/");
+  // a sign-in link that landed on the Site URL (redirect URL not allowed in Supabase yet)
+  if (!claims && pathname !== "/auth/callback" && (request.nextUrl.searchParams.has("code") || request.nextUrl.searchParams.has("token_hash"))) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/auth/callback";
+    return NextResponse.redirect(url);
+  }
   if (!claims && !isPublic) {
     const url = request.nextUrl.clone();
     url.pathname = "/login";
