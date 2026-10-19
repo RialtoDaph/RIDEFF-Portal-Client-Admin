@@ -1,0 +1,382 @@
+{
+  "common": {
+    "ai": "AI",
+    "send": "↵ KIRIM",
+    "undo": "BATALKAN",
+    "close": "Tutup",
+    "escClose": "ESC TUTUP",
+    "xClose": "× TUTUP",
+    "back": "← KEMBALI",
+    "included": "termasuk",
+    "copy": "Salin",
+    "copied": "Tersalin ✓",
+    "portal": "PORTAL",
+    "esc": "ESC"
+  },
+  "time": {
+    "yesterday": "kemarin",
+    "now": "sekarang",
+    "months": "{count} bulan"
+  },
+  "money": {
+    "perMonth": "{amount} / bulan",
+    "netNote": "Harga neto, belum termasuk PPN 19 %",
+    "netNoteUpper": "HARGA NETO, BELUM TERMASUK PPN 19 %"
+  },
+  "auth": {
+    "title": "Selamat datang kembali.",
+    "lead": "Kami kirim kode lewat email. Tanpa kata sandi.",
+    "email": "EMAIL",
+    "emailPlaceholder": "email@anda.com",
+    "sendCode": "Kirim kode →",
+    "codeSentTo": "KODE DIKIRIM KE",
+    "code": "KODE 6 DIGIT",
+    "signIn": "Masuk →",
+    "otherEmail": "Email lain",
+    "errEmail": "MASUKKAN EMAIL YANG VALID.",
+    "errCode": "KODE TERDIRI DARI 6 DIGIT.",
+    "footer": "AMAN · DATA DI UE",
+    "mfa": {
+      "challengeLabel": "KODE 6 DIGIT"
+    }
+  },
+  "profile": {
+    "label": "Profil",
+    "language": "BAHASA",
+    "signOut": "Keluar"
+  },
+  "nav": {
+    "project": "PROYEK",
+    "files": "FILE",
+    "invoices": "TAGIHAN",
+    "offer": "PENAWARAN",
+    "search": "⌘K CARI",
+    "clients": "KLIEN",
+    "inbox": "KOTAK MASUK",
+    "pipeline": "PIPELINE",
+    "templates": "TEMPLATE",
+    "aiSearch": "Siapa yang belum bayar?"
+  },
+  "phase": {
+    "1": "KONSULTASI",
+    "2": "ANALISIS",
+    "3": "BANGUN",
+    "lead": "LEAD"
+  },
+  "phaseName": {
+    "3": "Bangun"
+  },
+  "tag": {
+    "wunsch": "PERMINTAAN",
+    "zahlung": "PEMBAYARAN",
+    "datei": "FILE",
+    "freigabe": "PERSETUJUAN",
+    "update": "PEMBARUAN",
+    "rechnung": "TAGIHAN",
+    "start": "MULAI",
+    "testlauf": "UJI COBA",
+    "frage": "PERTANYAAN",
+    "angebot": "PENAWARAN",
+    "erinnerung": "PENGINGAT",
+    "vertrag": "KONTRAK",
+    "analyse": "ANALISIS"
+  },
+  "project": {
+    "status": "STATUS",
+    "inProgress": "● DIKERJAKAN",
+    "phaseLine": "Fase {num} · {phase} · live dalam {days} hari",
+    "approval": {
+      "waiting": "{title} menunggu Anda.",
+      "deadline": "TENGGAT {deadline} · LIVE TETAP {golive}",
+      "view": "↵ LIHAT",
+      "change": "E UBAH"
+    },
+    "change": {
+      "title": "PERUBAHAN {title}",
+      "placeholder": "Apa yang perlu diubah? Misalnya: jam buka lebih ke atas.",
+      "cancel": "ESC BATAL",
+      "send": "⌘↵ KIRIM"
+    },
+    "approved": {
+      "title": "{title} disetujui. Terima kasih!",
+      "sub": "LIVE TETAP {golive} · BERIKUTNYA: {next}"
+    },
+    "changeSent": {
+      "title": "Permintaan perubahan sudah di Rialto.",
+      "sub": "DRAF {n} PALING LAMBAT {date}"
+    },
+    "log": "LOG",
+    "phaseLineShort": "Fase {num} · {phase}"
+  },
+  "log": {
+    "fileUploaded": "{file} diunggah",
+    "itemApproved": "{title} disetujui",
+    "paid": "{month} · {amount} · lunas",
+    "reminderSent": "Pengingat terkirim"
+  },
+  "preview": {
+    "newIn": "BARU DI DRAF {n}",
+    "desktop": "DESKTOP",
+    "mobile": "PONSEL",
+    "approve": "↵ YA, SETUJUI",
+    "requestChange": "E MINTA PERUBAHAN"
+  },
+  "meeting": {
+    "next": "JADWAL BERIKUTNYA",
+    "linkBefore": "LINK DIKIRIM 10 MNT SEBELUMNYA"
+  },
+  "package": {
+    "title": "PAKET",
+    "paid": "LUNAS ✓"
+  },
+  "chat": {
+    "title": "TANYA RIALTO",
+    "you": "ANDA",
+    "typing": "RIALTO MENGETIK…",
+    "placeholder": "Tulis pesan…"
+  },
+  "files": {
+    "title": "File",
+    "count": "{count} FILE · DARI ANDA DAN RIALTO",
+    "name": "NAMA",
+    "from": "DARI",
+    "date": "TANGGAL",
+    "size": "UKURAN",
+    "you": "Anda",
+    "upload": "↑ UNGGAH"
+  },
+  "invoices": {
+    "title": "Tagihan",
+    "allPaid": "SEMUA LUNAS ✓",
+    "nOpen": "{count} TERBUKA",
+    "nr": "NO.",
+    "item": "ITEM",
+    "date": "TANGGAL",
+    "status": "STATUS",
+    "amount": "JUMLAH",
+    "pay": "BAYAR",
+    "pdf": "↓ PDF"
+  },
+  "invoiceStatus": {
+    "open": "TERBUKA",
+    "paid": "LUNAS",
+    "announced": "DIUMUMKAN",
+    "overdue": "JATUH TEMPO",
+    "reminded": "DIINGATKAN"
+  },
+  "offer": {
+    "title": "Penawaran Anda",
+    "docLabel": "PENAWARAN {nr}",
+    "service": "LAYANAN",
+    "amount": "JUMLAH",
+    "group": {
+      "internal": {
+        "1": "Tugas & daftar periksa",
+        "2": "Alur kerja (SOP) dengan AI",
+        "3": "Gudang & stok",
+        "4": "Kokpit pemilik",
+        "5": "Paket industri",
+        "title": "Sistem internal dengan AI"
+      },
+      "teamApp": {
+        "1": "Tugas dan daftar periksa untuk tim",
+        "2": "Alur kerja selalu ada, juga di ponsel",
+        "title": "Aplikasi tim"
+      },
+      "web": {
+        "1": "Kami bangun, luncurkan, dan rawat",
+        "2": "Periksa dan setujui draf di portal",
+        "title": "Situs web atau toko online"
+      },
+      "ops": {
+        "1": "Hosting di UE",
+        "2": "Domain sendiri termasuk",
+        "3": "Enkripsi SSL",
+        "4": "Backup dan pembaruan",
+        "5": "Dukungan lewat portal",
+        "title": "Operasional & teknis"
+      }
+    },
+    "setupOnce": "Setup (sekali bayar)",
+    "monthlyRow": "{package} (bulanan)",
+    "term": "Durasi kontrak",
+    "chip": {
+      "eu": "DATA DI UE",
+      "built": "DIBANGUN, LIVE, DIRAWAT",
+      "portal": "SEMUA DI PORTAL"
+    },
+    "panel": {
+      "title": "Apakah penawaran ini sudah sesuai?",
+      "package": "PAKET",
+      "monthly": "BULANAN",
+      "term": "DURASI KONTRAK",
+      "hosting": "HOSTING & DOMAIN"
+    },
+    "agb": "Saya sudah membaca <agb>syarat dan ketentuan</agb> dan menyetujuinya.",
+    "approve": "↵ YA, SETUJUI",
+    "legal": "DENGAN PERSETUJUAN KONTRAK BERLAKU · WAKTU DAN IP DICATAT",
+    "done": {
+      "title": "Penawaran disetujui. Terima kasih!",
+      "toInvoices": "→ KE TAGIHAN"
+    }
+  },
+  "pay": {
+    "invoice": "TAGIHAN {nr}",
+    "monthlySuffix": " · BULANAN",
+    "stripe": "Kartu, debit langsung SEPA atau Klarna",
+    "stripeSub": "VIA STRIPE · AMAN",
+    "bank": "Transfer bank",
+    "bankSub": "RIALTO MENGONFIRMASI STATUS SECARA MANUAL",
+    "recipient": "PENERIMA",
+    "iban": "IBAN",
+    "reference": "KETERANGAN",
+    "toStripe": "Lanjut ke Stripe →",
+    "transferred": "SAYA SUDAH TRANSFER",
+    "redirecting": "MENGALIHKAN KE STRIPE…",
+    "paid": {
+      "title": "Lunas. Terima kasih!",
+      "sub": "BUKTI VIA EMAIL"
+    },
+    "bankDone": {
+      "title": "Terima kasih! Kami akan memeriksa pembayarannya.",
+      "sub": "TRANSFER DIUMUMKAN"
+    }
+  },
+  "kpi": {
+    "mrr": "MRR",
+    "mrrTrend": "▲ {pct} · 12 BLN",
+    "clients": "KLIEN",
+    "inBuild": "{count} SEDANG DIBANGUN",
+    "approvals": "PERSETUJUAN",
+    "maxDays": "MAKS {count} HARI",
+    "open": "TERBUKA",
+    "overdue": "{count} JATUH TEMPO",
+    "reminded": "DIINGATKAN",
+    "leads": "LEADS",
+    "thisWeek": "MINGGU INI"
+  },
+  "clients": {
+    "colNum": "#",
+    "colClient": "KLIEN",
+    "colPhase": "FASE",
+    "colNext": "LANGKAH BERIKUTNYA",
+    "hint": "J/K NAVIGASI · ↵ BUKA ·",
+    "filterAction": "F HANYA PERLU TINDAKAN",
+    "filterAll": "F TAMPILKAN SEMUA",
+    "add": "+ TAMBAH KLIEN"
+  },
+  "detail": {
+    "back": "← SEMUA KLIEN · ESC",
+    "prev": "K ↑",
+    "next": "J ↓",
+    "contact": "KONTAK",
+    "activity": "AKTIVITAS",
+    "viewAsClient": "LIHAT SEBAGAI KLIEN →",
+    "sendReminder": "KIRIM PENGINGAT"
+  },
+  "queue": {
+    "header": "AI · PUTUSKAN HARI INI · {count} TERBUKA",
+    "offerWaiting": "{org} menunggu penawaran {days} hari. Draf sudah siap.",
+    "invoiceOpen": "{org}: tagihan {month} terbuka {days} hari.",
+    "offerAccepted": "{org} menyetujui penawaran. Tagihan setup sudah dikirim.",
+    "reviewSend": "↵ CEK & KIRIM",
+    "later": "S NANTI",
+    "sendReminder": "KIRIM PENGINGAT",
+    "offerSent": "✓ PENAWARAN TERKIRIM",
+    "reminderSent": "✓ PENGINGAT TERKIRIM",
+    "backTomorrow": "↻ MUNCUL LAGI BESOK",
+    "addClient": "TAMBAH KLIEN →",
+    "introCalls": "Konsultasi"
+  },
+  "pipeline": {
+    "lead": "LEAD",
+    "stage": "TAHAP",
+    "next": "LANGKAH BERIKUTNYA",
+    "potential": "POTENSI"
+  },
+  "leadStage": {
+    "intro_call": "KONSULTASI",
+    "analysis_done": "ANALISIS ✓",
+    "offer_sent": "PENAWARAN ✓",
+    "accepted": "DISETUJUI ✓"
+  },
+  "leadNext": {
+    "sendOffer": "Kirim penawaran",
+    "awaitReply": "Tunggu balasan",
+    "addClient": "Tambah klien"
+  },
+  "adminInvoices": {
+    "count": "{count} TAGIHAN",
+    "month": "BULAN",
+    "remind": "KIRIM PENGINGAT",
+    "markPaid": "TANDAI LUNAS ✓",
+    "create": "+ BUAT TAGIHAN",
+    "once": "Sekali bayar",
+    "monthly": "Bulanan",
+    "client": "KLIEN",
+    "item": "ITEM",
+    "amountNet": "JUMLAH NETO (€)",
+    "net": "Neto",
+    "vat": "PPN 19 %",
+    "methods": "METODE PEMBAYARAN",
+    "methodStripe": "Stripe: kartu, SEPA, Klarna",
+    "methodBank": "Transfer bank",
+    "aboNote": "LANGGANAN: STRIPE MENAGIH TIAP BULAN HINGGA DIBATALKAN",
+    "createSend": "BUAT & KIRIM"
+  },
+  "newClient": {
+    "title": "Klien baru",
+    "sub": "AKSES PORTAL",
+    "company": "PERUSAHAAN",
+    "contact": "NARAHUBUNG",
+    "email": "EMAIL",
+    "city": "KOTA (OPSIONAL)",
+    "package": "PAKET",
+    "roleNote": "PERAN KONTAK: PEMILIK (SEMUA, BAYAR, SETUJUI)",
+    "sendWelcome": "Kirim email selamat datang",
+    "submit": "BUAT & UNDANG →",
+    "preview": "PRATINJAU EMAIL",
+    "from": "DARI {email}",
+    "done": {
+      "open": "BUKA KLIEN →",
+      "more": "TAMBAH KLIEN LAIN"
+    }
+  },
+  "inbox": {
+    "title": "Kotak masuk",
+    "tab": "KOTAK MASUK {count}",
+    "open": "{count} TERBUKA",
+    "perItem": "SATU UTAS PER ELEMEN",
+    "element": "ELEMEN",
+    "context": "KONTEKS",
+    "placeholder": "Tulis balasan…",
+    "openClient": "BUKA KLIEN →",
+    "allDone": "Semua sudah dibalas.",
+    "sendNext": "⌘↵ KIRIM & LANJUT",
+    "message": "PESAN",
+    "perMonthUpper": "{amount} / BULAN"
+  },
+  "templates": {
+    "vars": "VARIABEL DIGANTI SAAT DIKIRIM"
+  },
+  "templateKind": {
+    "angebot": "PENAWARAN",
+    "freigabe": "PERSETUJUAN",
+    "erinnerung": "PENGINGAT",
+    "start": "MULAI"
+  },
+  "palette": {
+    "placeholder": "Lompat ke… atau tanya AI",
+    "kindClient": "KLIEN",
+    "kindAdmin": "ADMIN",
+    "kindOpenClient": "BUKA KLIEN",
+    "clients": "Klien",
+    "pipeline": "Pipeline",
+    "templates": "Template",
+    "openApprovals": "Hanya persetujuan terbuka",
+    "whoNotPaid": "Tagihan · siapa belum bayar?",
+    "orgProject": "{org} · Proyek",
+    "orgFiles": "{org} · File",
+    "orgInvoices": "{org} · Tagihan"
+  }
+}

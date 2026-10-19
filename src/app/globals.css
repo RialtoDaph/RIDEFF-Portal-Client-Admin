@@ -1,0 +1,139 @@
+@import "tailwindcss";
+
+/* RIDEFF Portal design tokens (rideff_portal_handoff/README.md → Fidelity).
+   The portal is dark only; the paper colours are for the quote document. */
+@theme {
+  --color-*: initial;
+
+  /* surfaces */
+  --color-page: #0b0b0c;
+  --color-card: #111113;
+  --color-card-line: #26262a;
+  --color-inner: #0b0b0c;
+  --color-line: #1f1f22; /* dividers, inner borders */
+  --color-field-line: #2a2a2e; /* inputs, menus, toggles */
+  --color-strong-line: #3a3a40;
+  --color-raised: #1c1c1f; /* avatar, menu hover */
+  --color-hover: #18181b; /* row hover, selected row */
+  --color-chip: #1a1a1d; /* finished phase segment, bubbles */
+  --color-sunken: #141416; /* upcoming phase segment, search pill */
+
+  /* text */
+  --color-ink: #f5f5f4;
+  --color-ink-soft: #d4d4d8;
+  --color-muted: #a1a1aa;
+  --color-label: #8a8a93;
+  --color-on-light: #0a0a0a;
+  --color-on-light-muted: #52525b;
+  --color-white: #ffffff;
+
+  /* brand */
+  --color-brand: #ff6a00;
+  --color-brand-hover: #ff7a1a;
+  --color-accent: #ff9a50;
+  --color-accent-soft: #ffb27a;
+  --color-progress-track: #2a1608;
+
+  /* approval (orange) */
+  --color-approval: #1f130a;
+  --color-approval-line: #5a2a08;
+  --color-approval-strong: #7a3a10;
+  --color-approval-field: #140c06;
+
+  /* success */
+  --color-success: #0f2a18;
+  --color-success-line: #1e5c34;
+  --color-success-ink: #86efac;
+  --color-success-dot: #22a355;
+  --color-copied: #15803d;
+
+  /* error / overdue */
+  --color-danger: #fca5a5;
+
+  /* quote document, warm paper */
+  --color-paper: #e7e3dc;
+  --color-paper-ink: #1c1917;
+  --color-paper-muted: #57534e;
+  --color-paper-line: #cfc9bf;
+
+  /* email preview (light card) */
+  --color-mail-line: #d4d4d1;
+
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --radius-card: 16px;
+  --radius-menu: 14px;
+  --radius-inner: 12px;
+  --radius-field: 10px;
+  --radius-pill: 9999px;
+
+  --tracking-label: 0.12em;
+  --tracking-mono: 0.06em;
+
+  /* below 820px every grid is a single column */
+  --breakpoint-wide: 820px;
+
+  --shadow-menu: 0 20px 50px rgba(0, 0, 0, 0.5);
+  --shadow-palette: 0 30px 80px rgba(0, 0, 0, 0.6);
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+    /* the design uses the browser default, not Tailwind's 1.5 */
+    line-height: normal;
+  }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background-color: var(--color-page);
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 56px 56px;
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  a {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+  a:hover {
+    color: var(--color-brand);
+  }
+  input,
+  textarea,
+  select,
+  button {
+    font: inherit;
+  }
+  /* visible focus ring for keyboard users everywhere */
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 2px;
+  }
+  /* text fields show focus with their border instead */
+  input:not([type="checkbox"]):not([type="radio"]):focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    outline: none;
+    border-color: var(--color-brand);
+  }
+}
+
+
+/* 44px hit area around small controls without changing their look */
+@utility touch-target {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: max(100%, 44px);
+    height: max(100%, 44px);
+    transform: translate(-50%, -50%);
+  }
+}
