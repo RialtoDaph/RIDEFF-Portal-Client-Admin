@@ -90,11 +90,17 @@ async function render(admin: SupabaseClient, n: Row, locale: Locale): Promise<{ 
       return wrap(t("email.phaseChange.subject", vars), t("email.phaseChange.body", vars));
     }
     case "weekly_summary": {
-      const vars = {
-        project: String(p.project), num: pad(p.phase), phase: t(`phaseName.${Number(p.phase)}`), pct: String(p.pct),
-        approvals: String(p.approvals), invoices: String(p.invoices), files: String(p.files),
-      };
-      return wrap(t("email.weekly.subject"), t("email.weekly.body", vars));
+      // one block per project (rows from before step 8 carry a single project)
+      const projects = (Array.isArray(p.projects) ? p.projects : [p]) as Record<string, unknown>[];
+      const body = projects
+        .map((pr) =>
+          t("email.weekly.body", {
+            project: String(pr.project), num: pad(pr.phase), phase: t(`phaseName.${Number(pr.phase)}`), pct: String(pr.pct),
+            approvals: String(pr.approvals), invoices: String(p.invoices), files: String(pr.files),
+          }),
+        )
+        .join("\n\n");
+      return wrap(t("email.weekly.subject"), body);
     }
     default:
       return null;

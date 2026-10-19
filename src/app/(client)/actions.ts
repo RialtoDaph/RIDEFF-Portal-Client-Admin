@@ -56,15 +56,16 @@ export async function sendMessage(threadId: string, text: string): Promise<{ ok:
 
 /** Reloads a thread (after a Realtime event) and marks the team's messages as read. */
 export async function refreshThread(threadId: string): Promise<ChatMessage[]> {
-  const session = await requireClient();
+  const session = await requireClient({ read: true });
   if (!uuid.safeParse(threadId).success) return [];
   const supabase = await createClient();
-  await supabase.rpc("mark_thread_read", { p_thread: threadId });
+  // staff viewing as the client leave the read status alone
+  if (!session.viewAs) await supabase.rpc("mark_thread_read", { p_thread: threadId });
   return loadThreadMessages(threadId, session.membership.org.id);
 }
 
 export async function selectProject(projectId: string) {
-  const session = await requireClient();
+  const session = await requireClient({ read: true });
   if (!uuid.safeParse(projectId).success) return;
   const supabase = await createClient();
   const { data } = await supabase.from("projects").select("id").eq("id", projectId).eq("org_id", session.membership.org.id).maybeSingle();
@@ -126,7 +127,7 @@ export async function finishUpload(input: { projectId: string; path: string; fil
 }
 
 export async function downloadUrl(fileId: string): Promise<string | null> {
-  await requireClient();
+  await requireClient({ read: true });
   if (!uuid.safeParse(fileId).success) return null;
   const supabase = await createClient();
   const { data: file } = await supabase.from("files").select("storage_path, name, ext").eq("id", fileId).maybeSingle();

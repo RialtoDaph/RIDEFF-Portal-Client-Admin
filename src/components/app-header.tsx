@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import { BrandMark } from "./brand-mark";
 import { ProfileMenu, type MenuUser } from "./profile-menu";
 import { ProjectPicker } from "./client/project-picker";
+import { NotificationBell, type BellData } from "./notification-bell";
 
 /** `also`: further path prefixes that keep the tab active (e.g. /admin/kunden under KUNDEN). */
 export type HeaderTab = { href: string; label: string; exact?: boolean; also?: string[] };
@@ -17,10 +18,13 @@ type Props = {
   user: MenuUser;
   /** client area only, when the org has more than one project */
   projects?: { list: { id: string; name: string }[]; current: string };
+  bell: BellData;
+  /** link to the settings page in the profile menu */
+  settingsHref: string;
 };
 
 /** Top bar shared by the client area and /admin: address, tabs, search, profile. */
-export function AppHeader({ address, tabs, variant, user, projects }: Props) {
+export function AppHeader({ address, tabs, variant, user, projects, bell, settingsHref }: Props) {
   const pathname = usePathname();
   const t = useTranslations();
   const isActive = (tab: HeaderTab) =>
@@ -73,7 +77,10 @@ export function AppHeader({ address, tabs, variant, user, projects }: Props) {
           <span className="text-[10px] text-label">⌘K</span>
         </button>
       )}
-      <ProfileMenu user={user} />
+      <div className="ml-auto flex items-center gap-2 wide:ml-0">
+        <NotificationBell data={bell} />
+        <ProfileMenu user={user} settingsHref={settingsHref} />
+      </div>
     </header>
   );
 }

@@ -9,9 +9,12 @@ import { formatDayMonth, formatMoney, formatTime } from "@/lib/format";
 import { isTyping, useKeydown } from "@/lib/hotkeys";
 import type { Offer } from "@/lib/client/data";
 import { acceptOffer } from "@/app/(client)/angebot/actions";
+import { useReadOnly } from "./view-as";
 
 /** "Passt das Angebot so?": summary, AGB checkbox, approval. ↵ approves once the box is ticked. */
-export function OfferPanel({ offer, canAccept }: { offer: Offer; canAccept: boolean }) {
+export function OfferPanel({ offer, canAccept: mayAccept }: { offer: Offer; canAccept: boolean }) {
+  const readOnly = useReadOnly();
+  const canAccept = mayAccept && !readOnly;
   const t = useTranslations();
   const locale = useLocale() as Locale;
   const router = useRouter();

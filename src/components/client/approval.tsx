@@ -9,6 +9,7 @@ import { formatDayMonth, formatWeekdayDate } from "@/lib/format";
 import { isTyping, useKeydown } from "@/lib/hotkeys";
 import type { ApprovalItem } from "@/lib/client/data";
 import { approveItem, requestChange, undoDecision } from "@/app/(client)/actions";
+import { useReadOnly } from "./view-as";
 
 const pill = "cursor-pointer rounded-pill font-mono text-[12px] px-[14px] py-[10px] whitespace-nowrap disabled:cursor-wait";
 
@@ -17,7 +18,9 @@ const pill = "cursor-pointer rounded-pill font-mono text-[12px] px-[14px] py-[10
  * Keys: ↵ opens the preview, E the change request; in the preview ↵ approves, E asks for a change;
  * Esc closes the innermost layer; ⌘↵ sends the change. Only an Inhaber can decide.
  */
-export function Approval({ item, canDecide, goLive }: { item: ApprovalItem; canDecide: boolean; goLive: string | null }) {
+export function Approval({ item, canDecide: mayDecide, goLive }: { item: ApprovalItem; canDecide: boolean; goLive: string | null }) {
+  const readOnly = useReadOnly();
+  const canDecide = mayDecide && !readOnly;
   const t = useTranslations();
   const locale = useLocale() as Locale;
   const router = useRouter();

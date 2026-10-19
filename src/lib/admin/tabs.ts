@@ -7,6 +7,7 @@ export const ADMIN_TABS = [
   { href: "/admin/pipeline", key: "nav.pipeline", roles: ["support"] },
   { href: "/admin/rechnungen", key: "nav.invoices", roles: ["finanzen"] },
   { href: "/admin/vorlagen", key: "nav.templates", roles: ["support"] },
+  { href: "/admin/team", key: "nav.team", roles: [] },
 ] as const satisfies readonly { href: string; key: string; roles: readonly StaffRole[]; exact?: boolean }[];
 
 export function tabsFor(role: StaffRole) {

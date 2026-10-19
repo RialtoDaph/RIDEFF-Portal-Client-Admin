@@ -45,9 +45,11 @@
   "profile": {
     "label": "Profil",
     "language": "SPRACHE",
-    "signOut": "Abmelden"
+    "signOut": "Abmelden",
+    "settings": "Einstellungen"
   },
   "nav": {
+    "team": "TEAM",
     "project": "PROJEKT",
     "files": "DATEIEN",
     "invoices": "RECHNUNGEN",
@@ -58,6 +60,162 @@
     "pipeline": "PIPELINE",
     "templates": "VORLAGEN",
     "aiSearch": "Wer zahlt noch nicht?"
+  },
+  "team": {
+    "title": "Team",
+    "tabMembers": "MITGLIEDER",
+    "tabAccess": "ZUGRIFFE",
+    "invite": "+ MITGLIED EINLADEN",
+    "role": {
+      "owner": "OWNER",
+      "support": "SUPPORT",
+      "finanzen": "FINANZEN",
+      "builder": "BUILDER"
+    },
+    "colName": "NAME",
+    "colRole": "ROLLE",
+    "col2fa": "2FA",
+    "colLogin": "LETZTER LOGIN",
+    "never": "NOCH NIE",
+    "actions": "Aktionen für {name}",
+    "changeRole": "Rolle ändern",
+    "reset2fa": "2FA zurücksetzen",
+    "resetDone": "2FA ZURÜCKGESETZT · BEIM NÄCHSTEN LOGIN NEU EINRICHTEN",
+    "remove": "Entfernen",
+    "confirmRemove": "Wirklich entfernen?",
+    "inviteHint": "Neue Mitglieder richten beim ersten Login die Zwei-Faktor-Anmeldung ein.",
+    "invited": "EINLADUNG GESENDET AN {email}",
+    "access": {
+      "time": "ZEIT",
+      "staff": "TEAM",
+      "client": "KUNDE",
+      "duration": "DAUER",
+      "pages": "SEITEN",
+      "running": "LÄUFT",
+      "minutes": "{count} MIN",
+      "empty": "Noch keine Zugriffe.",
+      "allClients": "ALLE KUNDEN"
+    }
+  },
+  "email": {
+    "staffInvite": {
+      "subject": "Einladung ins RIDEFF-Team",
+      "body": "Sie sind jetzt als {role} im RIDEFF-Portal. Zum Anmelden reicht Ihre E-Mail-Adresse; beim ersten Mal richten Sie die Zwei-Faktor-Anmeldung mit einer Authenticator-App ein."
+    },
+    "greeting": "Hallo {name},",
+    "signoff": "Viele Grüße\nRialto",
+    "toPortal": "Zum Portal: {url}",
+    "approvalNew": {
+      "subject": "Neu zur Freigabe: {element}",
+      "body": "{element} liegt im Portal zur Freigabe. Ein Klick genügt, oder Sie schreiben, was anders sein soll.",
+      "deadline": "Bitte bis {date} ansehen."
+    },
+    "chatReply": {
+      "subject": "Neue Nachricht zu {element}",
+      "body": "{author} hat Ihnen zu {element} geschrieben:\n\n„{excerpt}“\n\nAntworten können Sie direkt im Portal."
+    },
+    "chatTeam": {
+      "subject": "{org}: Nachricht zu {element}",
+      "body": "{author} schreibt zu {element}:\n\n„{excerpt}“"
+    },
+    "invoiceNew": {
+      "subject": "Neue Rechnung {nr}",
+      "body": "im Portal liegt eine neue Rechnung für Sie: {nr} über {amount} ({item}).\n\nFällig ist sie am {due}, bezahlen können Sie direkt im Portal."
+    },
+    "invoiceDue": {
+      "subject": "Rechnung {nr} ist am {due} fällig",
+      "body": "kurzer Hinweis: Die Rechnung {nr} über {amount} ist am {due} fällig.\n\nSie finden sie im Portal unter Rechnungen."
+    },
+    "testRunReminder": {
+      "subject": "Morgen: Testlauf {system} um {time}",
+      "body": "morgen um {time} ist der Testlauf für {system}, per Video, ca. 30 Minuten.\n\nDen Link bekommen Sie 10 Minuten vorher."
+    },
+    "phaseChange": {
+      "subject": "{project}: jetzt Phase {num} · {phase}",
+      "body": "Ihr Projekt ist einen Schritt weiter: Phase {num} · {phase}.\n\nDen aktuellen Stand sehen Sie im Portal."
+    },
+    "weekly": {
+      "subject": "Ihre Woche mit RIDEFF",
+      "body": "hier ist der Stand von {project}:\n\nPhase {num} · {phase} · {pct} %\nOffene Freigaben: {approvals}\nOffene Rechnungen: {invoices}\nNeue Dateien diese Woche: {files}"
+    },
+    "offerAccepted": {
+      "subject": "{org} hat das Angebot {nr} freigegeben",
+      "body": "{org} hat das Angebot {nr} freigegeben. Die Setup-Rechnung {invoice} ist raus."
+    }
+  },
+  "recovery": {
+    "title": "WIEDERHERSTELLUNGSCODES",
+    "hint": "Jeder Code funktioniert einmal, falls Ihr Handy mit der Authenticator-App fehlt. Bewahren Sie die Codes sicher auf, zum Beispiel im Passwort-Manager.",
+    "download": "HERUNTERLADEN .TXT",
+    "saved": "Ich habe die Codes gespeichert",
+    "continue": "WEITER →",
+    "lost": "Kein Zugriff auf die App? Wiederherstellungscode nutzen",
+    "useTitle": "Mit Wiederherstellungscode anmelden",
+    "useHint": "Danach richten Sie die Zwei-Faktor-Anmeldung neu ein.",
+    "code": "WIEDERHERSTELLUNGSCODE",
+    "submit": "CODE PRÜFEN →",
+    "wrong": "DER CODE STIMMT NICHT ODER WURDE SCHON BENUTZT.",
+    "failed": "CODES KONNTEN NICHT ERZEUGT WERDEN. BITTE NOCH EINMAL VERSUCHEN.",
+    "fileTitle": "RIDEFF Portal · Wiederherstellungscodes für {email}"
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "profile": "PROFIL",
+    "name": "NAME",
+    "email": "E-MAIL",
+    "emailNote": "ÄNDERN ÜBER RIALTO",
+    "save": "SPEICHERN",
+    "saved": "GESPEICHERT ✓",
+    "failed": "SPEICHERN FEHLGESCHLAGEN. BITTE NOCH EINMAL VERSUCHEN.",
+    "notifications": "E-MAIL-BENACHRICHTIGUNGEN",
+    "notifHint": "Im Portal sehen Sie alles unter der Glocke. Hier legen Sie fest, was zusätzlich per E-Mail kommt.",
+    "pref": {
+      "approvals": "Neue Freigaben",
+      "offers": "Angenommene Angebote",
+      "messages": "Neue Nachrichten",
+      "invoices": "Rechnungen und Fälligkeiten",
+      "testRuns": "Testläufe",
+      "phase": "Neue Projektphase",
+      "weekly": "Wochenübersicht am Montag"
+    },
+    "team": "TEAM",
+    "teamHint": "Inhaber dürfen alles, auch bezahlen und freigeben. Mitarbeiter sehen alles, schreiben und laden Dateien hoch.",
+    "you": "SIE",
+    "role": {
+      "inhaber": "INHABER",
+      "mitarbeiter": "MITARBEITER"
+    },
+    "roleOf": "Rolle von {name}",
+    "remove": "ENTFERNEN",
+    "confirmRemove": "WIRKLICH ENTFERNEN?",
+    "invite": "MITGLIED EINLADEN",
+    "inviteSubmit": "EINLADEN →",
+    "invited": "EINLADUNG GESENDET AN {email}",
+    "invitedNoMail": "ZUGANG ANGELEGT · KEINE MAIL GESENDET",
+    "security": "ANMELDUNG",
+    "codesLeft": "{count, plural, one {# Wiederherstellungscode übrig} other {# Wiederherstellungscodes übrig}}",
+    "newCodes": "NEUE CODES ERZEUGEN"
+  },
+  "viewAs": {
+    "banner": "ANSICHT ALS KUNDE · {org} · NUR LESEN",
+    "end": "BEENDEN ×"
+  },
+  "notif": {
+    "label": "Benachrichtigungen",
+    "unread": "{count, plural, one {# ungelesen} other {# ungelesen}}",
+    "title": "BENACHRICHTIGUNGEN",
+    "empty": "Noch keine Benachrichtigungen.",
+    "markAll": "ALLE ALS GELESEN MARKIEREN",
+    "testRunInvite": "Testlauf {system}: {date} um {time}",
+    "tag": {
+      "approval": "FREIGABE",
+      "offer": "ANGEBOT",
+      "message": "NACHRICHT",
+      "invoice": "RECHNUNG",
+      "testRun": "TESTLAUF",
+      "phase": "PHASE",
+      "weekly": "WOCHE"
+    }
   },
   "phase": {
     "1": "ERSTGESPRÄCH",
@@ -467,48 +625,6 @@
     "freigabe": "FREIGABE",
     "erinnerung": "ERINNERUNG",
     "start": "START"
-  },
-  "email": {
-    "greeting": "Hallo {name},",
-    "signoff": "Viele Grüße\nRialto",
-    "toPortal": "Zum Portal: {url}",
-    "approvalNew": {
-      "subject": "Neu zur Freigabe: {element}",
-      "body": "{element} liegt im Portal zur Freigabe. Ein Klick genügt, oder Sie schreiben, was anders sein soll.",
-      "deadline": "Bitte bis {date} ansehen."
-    },
-    "chatReply": {
-      "subject": "Neue Nachricht zu {element}",
-      "body": "{author} hat Ihnen zu {element} geschrieben:\n\n„{excerpt}“\n\nAntworten können Sie direkt im Portal."
-    },
-    "chatTeam": {
-      "subject": "{org}: Nachricht zu {element}",
-      "body": "{author} schreibt zu {element}:\n\n„{excerpt}“"
-    },
-    "invoiceNew": {
-      "subject": "Neue Rechnung {nr}",
-      "body": "im Portal liegt eine neue Rechnung für Sie: {nr} über {amount} ({item}).\n\nFällig ist sie am {due}, bezahlen können Sie direkt im Portal."
-    },
-    "invoiceDue": {
-      "subject": "Rechnung {nr} ist am {due} fällig",
-      "body": "kurzer Hinweis: Die Rechnung {nr} über {amount} ist am {due} fällig.\n\nSie finden sie im Portal unter Rechnungen."
-    },
-    "testRunReminder": {
-      "subject": "Morgen: Testlauf {system} um {time}",
-      "body": "morgen um {time} ist der Testlauf für {system}, per Video, ca. 30 Minuten.\n\nDen Link bekommen Sie 10 Minuten vorher."
-    },
-    "phaseChange": {
-      "subject": "{project}: jetzt Phase {num} · {phase}",
-      "body": "Ihr Projekt ist einen Schritt weiter: Phase {num} · {phase}.\n\nDen aktuellen Stand sehen Sie im Portal."
-    },
-    "weekly": {
-      "subject": "Ihre Woche mit RIDEFF",
-      "body": "hier ist der Stand von {project}:\n\nPhase {num} · {phase} · {pct} %\nOffene Freigaben: {approvals}\nOffene Rechnungen: {invoices}\nNeue Dateien diese Woche: {files}"
-    },
-    "offerAccepted": {
-      "subject": "{org} hat das Angebot {nr} freigegeben",
-      "body": "{org} hat das Angebot {nr} freigegeben. Die Setup-Rechnung {invoice} ist raus."
-    }
   },
   "palette": {
     "placeholder": "Springen zu… oder KI fragen",

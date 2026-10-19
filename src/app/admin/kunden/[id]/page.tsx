@@ -10,6 +10,7 @@ import { formatDayMonth, formatMoney, formatMonthYear } from "@/lib/format";
 import { DetailNav } from "@/components/admin/detail-nav";
 import { RemindButton } from "@/components/admin/remind-button";
 import { ProjectEditor } from "@/components/admin/project-editor";
+import { startViewAs } from "@/app/actions/view-as";
 
 const label = "font-mono text-[10px] tracking-[0.12em] text-muted";
 const inner = "flex flex-col gap-[6px] rounded-inner border border-line bg-inner p-4";
@@ -52,6 +53,11 @@ export default async function ClientDetail({ params }: PageProps<"/admin/kunden/
         <div className="flex flex-col gap-[6px]">
           <h1 className="m-0 text-[32px] leading-none font-bold tracking-[-0.04em]">{c.name}</h1>
           <span className="font-mono text-[11px] tracking-[0.1em] text-muted">{meta}</span>
+          <form action={startViewAs.bind(null, c.id)} className="pt-1">
+            <button type="submit" className="touch-target cursor-pointer rounded-pill border border-strong-line bg-transparent px-3 py-[7px] font-mono text-[11px] tracking-[0.08em] text-ink hover:border-brand">
+              {t("detail.viewAsClient")}
+            </button>
+          </form>
         </div>
         <div className="flex flex-col items-end gap-[2px]">
           <span className={label}>{t("kpi.mrr")}</span>

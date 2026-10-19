@@ -1,13 +1,14 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
+import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { LangSwitch } from "./lang-switch";
 import { signOut } from "@/app/actions/auth";
 
 export type MenuUser = { name: string; email: string; initials: string };
 
-export function ProfileMenu({ user }: { user: MenuUser }) {
+export function ProfileMenu({ user, settingsHref }: { user: MenuUser; settingsHref: string }) {
   const t = useTranslations("profile");
   const [open, setOpen] = useState(false);
   const wrap = useRef<HTMLDivElement>(null);
@@ -35,7 +36,7 @@ export function ProfileMenu({ user }: { user: MenuUser }) {
   }, [open]);
 
   return (
-    <div ref={wrap} className="relative ml-auto wide:ml-0">
+    <div ref={wrap} className="relative">
       <button
         ref={button}
         type="button"
@@ -60,6 +61,9 @@ export function ProfileMenu({ user }: { user: MenuUser }) {
             <span className="text-[10px] tracking-[0.12em] text-muted">{t("language")}</span>
             <LangSwitch />
           </div>
+          <Link href={settingsHref} onClick={() => setOpen(false)} className="border-t border-line pt-3 font-sans text-[14px] text-ink hover:text-brand">
+            {t("settings")}
+          </Link>
           <form action={signOut}>
             <button
               type="submit"

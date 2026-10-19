@@ -9,10 +9,12 @@ import { MAX_FILE_BYTES } from "@/lib/client/limits";
 import { browserClient } from "@/lib/supabase/browser";
 import type { FileRow } from "@/lib/client/data";
 import { downloadUrl, finishUpload, startUpload } from "@/app/(client)/actions";
+import { useReadOnly } from "./view-as";
 
 const cols = "grid grid-cols-[minmax(0,2fr)_100px_120px_90px] gap-3 px-5";
 
 export function FileList({ files, projectId, me }: { files: FileRow[]; projectId: string; me: string }) {
+  const readOnly = useReadOnly();
   const t = useTranslations("files");
   const locale = useLocale() as Locale;
   const router = useRouter();
@@ -61,7 +63,7 @@ export function FileList({ files, projectId, me }: { files: FileRow[]; projectId
             className={`touch-target cursor-pointer rounded-pill bg-brand px-[14px] py-[9px] font-mono text-[11px] tracking-[0.08em] text-white focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-brand ${pending ? "cursor-wait opacity-80" : ""}`}
           >
             {t("upload")}
-            <input ref={input} type="file" multiple disabled={pending} onChange={(e) => upload(e.target.files)} className="sr-only" />
+            <input ref={input} type="file" multiple disabled={pending || readOnly} onChange={(e) => upload(e.target.files)} className="sr-only" />
           </label>
         </div>
       </div>

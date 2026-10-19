@@ -40,5 +40,7 @@ export async function verifyTotp(factorId: string, code: string): Promise<TotpRe
   const { error } = await supabase.auth.mfa.challengeAndVerify({ factorId, code });
   if (error) return { ok: false, error: error.status === 429 ? "errRateLimit" : "errCodeWrong" };
   await supabase.rpc("mark_totp_enabled");
-  redirect("/admin");
+  // first setup (or after a recovery): show a fresh set of recovery codes
+  const { data: left } = await supabase.rpc("recovery_codes_left");
+  redirect(left ? "/admin" : "/login/2fa/codes");
 }

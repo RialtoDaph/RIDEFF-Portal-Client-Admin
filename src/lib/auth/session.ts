@@ -1,5 +1,6 @@
 import "server-only";
 import { cache } from "react";
+import { cookies, headers } from "next/headers";
 import { notFound, redirect } from "next/navigation";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { createClient } from "@/lib/supabase/server";
@@ -65,13 +66,36 @@ export function homeFor(session: Session): string | null {
   return null;
 }
 
-/** Client area: a member of at least one organisation. */
-export async function requireClient(): Promise<Session & { membership: Membership }> {
+export const VIEW_AS_COOKIE = "rideff_view_as";
+
+/** "Als Kunde ansehen": a staff member's read-only view of one client (cookie "orgId.logId"). */
+async function viewAsMembership(session: Session): Promise<{ membership: Membership; logId: string } | null> {
+  if (!session.staffRole || session.aal !== "aal2" || session.staffRole === "finanzen") return null;
+  const raw = (await cookies()).get(VIEW_AS_COOKIE)?.value ?? "";
+  const [orgId, logId] = raw.split(".");
+  const uuid = /^[0-9a-f-]{36}$/;
+  if (!uuid.test(orgId ?? "") || !uuid.test(logId ?? "")) return null;
+  const supabase = await createClient();
+  const { data: org } = await supabase.from("organizations").select("id, name, slug, status").eq("id", orgId).maybeSingle();
+  return org ? { membership: { role: "inhaber", org: org as Membership["org"] }, logId } : null;
+}
+
+/**
+ * Client area: a member of at least one organisation, or staff viewing as a client.
+ * The view is read-only: every server action that calls this refuses while viewing,
+ * except the ones that only read (`{ read: true }`).
+ */
+export async function requireClient(opts: { read?: boolean } = {}): Promise<Session & { membership: Membership; viewAs: { logId: string } | null }> {
   const session = await getSession();
   if (!session) redirect("/login");
+  const view = await viewAsMembership(session);
+  if (view) {
+    if (!opts.read && (await headers()).has("next-action")) throw new Error("read-only view");
+    return { ...session, membership: view.membership, viewAs: { logId: view.logId } };
+  }
   const membership = session.memberships[0];
   if (!membership) redirect(homeFor(session) ?? "/login");
-  return { ...session, membership };
+  return { ...session, membership, viewAs: null };
 }
 
 /**

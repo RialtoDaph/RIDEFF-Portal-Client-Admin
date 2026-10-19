@@ -8,11 +8,13 @@ import { formatDayMonth, formatMoney } from "@/lib/format";
 import type { Bank } from "@/lib/billing/settings";
 import type { InvoiceRow } from "@/lib/client/data";
 import { PayModal } from "./pay-modal";
+import { useReadOnly } from "./view-as";
 
 const cols = "grid grid-cols-[110px_minmax(0,2fr)_100px_130px_90px_96px_64px] gap-3 px-5";
 const STATUS_COLOR = { open: "text-muted", paid: "text-success-ink", announced: "text-accent", overdue: "text-danger" } as const;
 
 export function InvoiceTable(props: { invoices: InvoiceRow[]; canPay: boolean; bank: Bank; stripeReady: boolean; returningFrom: string | null }) {
+  const readOnly = useReadOnly();
   const t = useTranslations();
   const locale = useLocale() as Locale;
   const router = useRouter();
@@ -43,7 +45,7 @@ export function InvoiceTable(props: { invoices: InvoiceRow[]; canPay: boolean; b
           </thead>
           <tbody>
             {props.invoices.map((iv) => {
-              const payable = props.canPay && (iv.status === "open" || iv.status === "overdue") && ((iv.allowStripe && props.stripeReady) || iv.allowBank);
+              const payable = props.canPay && !readOnly && (iv.status === "open" || iv.status === "overdue") && ((iv.allowStripe && props.stripeReady) || iv.allowBank);
               return (
                 <tr key={iv.id} className={`${cols} items-baseline border-b border-line py-[13px] text-[14px]`}>
                   <td className="p-0 font-mono text-[12px] text-muted">{iv.number}</td>

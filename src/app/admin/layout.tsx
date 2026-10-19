@@ -1,5 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { AppHeader } from "@/components/app-header";
+import { loadNotifications } from "@/lib/notifications";
 import { KpiStrip } from "@/components/admin/kpi-strip";
 import { Palette, type PaletteItem } from "@/components/palette";
 import { initials, requireStaff } from "@/lib/auth/session";
@@ -33,6 +34,8 @@ export default async function AdminLayout({ children }: LayoutProps<"/admin">) {
           also: tab.href === "/admin" ? ["/admin/kunden"] : undefined,
         }))}
         user={{ name: session.profile.fullName, email: session.profile.email, initials: initials(session.profile.fullName, session.profile.email) }}
+        bell={{ userId: session.userId, ...(await loadNotifications()) }}
+        settingsHref="/admin/einstellungen"
       />
       <main className="flex min-h-0 flex-1 flex-col gap-[14px] px-4 py-[22px] wide:px-7">
         <KpiStrip />

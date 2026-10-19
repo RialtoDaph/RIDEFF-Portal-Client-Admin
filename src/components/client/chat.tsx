@@ -7,9 +7,11 @@ import { chatTime } from "@/lib/format";
 import { browserClient } from "@/lib/supabase/browser";
 import type { ChatMessage } from "@/lib/client/data";
 import { refreshThread, sendMessage } from "@/app/(client)/actions";
+import { useReadOnly } from "./view-as";
 
 /** "FRAGEN SIE RIALTO": the thread of the open item (or the project's general thread), live. */
 export function Chat({ threadId, initial, me }: { threadId: string; initial: ChatMessage[]; me: string }) {
+  const readOnly = useReadOnly();
   const t = useTranslations();
   const locale = useLocale() as Locale;
   const [messages, setMessages] = useState(initial);
@@ -38,7 +40,7 @@ export function Chat({ threadId, initial, me }: { threadId: string; initial: Cha
 
   const send = () => {
     const body = draft.trim();
-    if (!body || pending) return;
+    if (!body || pending || readOnly) return;
     start(async () => {
       const r = await sendMessage(threadId, body);
       if (!r.ok) return;
@@ -89,7 +91,7 @@ export function Chat({ threadId, initial, me }: { threadId: string; initial: Cha
           aria-label={t("chat.placeholder")}
           className="min-w-0 flex-1 border-none bg-transparent text-[14px] text-ink outline-none placeholder:text-label focus-visible:outline-none"
         />
-        <button type="submit" disabled={pending} className="touch-target cursor-pointer rounded-pill border-none bg-brand px-3 py-[10px] font-mono text-[11px] text-white">
+        <button type="submit" disabled={pending || readOnly} className="touch-target cursor-pointer rounded-pill border-none bg-brand px-3 py-[10px] font-mono text-[11px] text-white">
           {t("common.send")}
         </button>
       </form>
