@@ -1,0 +1,411 @@
+{
+  "common": {
+    "ai": "KI",
+    "send": "↵ SENDEN",
+    "undo": "RÜCKGÄNGIG",
+    "close": "Schließen",
+    "escClose": "ESC SCHLIESSEN",
+    "xClose": "× SCHLIESSEN",
+    "back": "← ZURÜCK",
+    "included": "inklusive",
+    "copy": "Kopieren",
+    "copied": "Kopiert ✓",
+    "portal": "PORTAL",
+    "esc": "ESC"
+  },
+  "time": {
+    "yesterday": "gestern",
+    "now": "jetzt",
+    "months": "{count, plural, one {# Monat} other {# Monate}}"
+  },
+  "money": {
+    "perMonth": "{amount} / Monat",
+    "netNote": "Preise netto, zzgl. 19 % MwSt.",
+    "netNoteUpper": "PREISE NETTO, ZZGL. 19 % MWST."
+  },
+  "auth": {
+    "title": "Willkommen zurück.",
+    "lead": "Wir schicken Ihnen einen Code per E-Mail. Kein Passwort nötig.",
+    "email": "E-MAIL",
+    "emailPlaceholder": "ihre@email.de",
+    "sendCode": "Code senden →",
+    "codeSentTo": "CODE GESENDET AN",
+    "code": "6-STELLIGER CODE",
+    "signIn": "Anmelden →",
+    "otherEmail": "Andere E-Mail",
+    "errEmail": "BITTE EINE GÜLTIGE E-MAIL EINGEBEN.",
+    "errCode": "DER CODE HAT 6 ZIFFERN.",
+    "footer": "GESCHÜTZT · DATEN IN DER EU",
+    "errCodeWrong": "DER CODE STIMMT NICHT ODER IST ABGELAUFEN.",
+    "errRateLimit": "ZU VIELE VERSUCHE. BITTE KURZ WARTEN.",
+    "mfa": {
+      "challengeLabel": "6-STELLIGER CODE"
+    }
+  },
+  "profile": {
+    "label": "Profil",
+    "language": "SPRACHE",
+    "signOut": "Abmelden"
+  },
+  "nav": {
+    "project": "PROJEKT",
+    "files": "DATEIEN",
+    "invoices": "RECHNUNGEN",
+    "offer": "ANGEBOT",
+    "search": "⌘K SUCHEN",
+    "clients": "KUNDEN",
+    "inbox": "INBOX",
+    "pipeline": "PIPELINE",
+    "templates": "VORLAGEN",
+    "aiSearch": "Wer zahlt noch nicht?"
+  },
+  "phase": {
+    "1": "ERSTGESPRÄCH",
+    "2": "ANALYSE",
+    "3": "BAUEN",
+    "4": "TESTEN",
+    "5": "LIVE",
+    "lead": "LEAD"
+  },
+  "phaseName": {
+    "1": "Erstgespräch",
+    "2": "Analyse",
+    "3": "Bauen",
+    "4": "Testen",
+    "5": "Live"
+  },
+  "tag": {
+    "wunsch": "WUNSCH",
+    "zahlung": "ZAHLUNG",
+    "datei": "DATEI",
+    "freigabe": "FREIGABE",
+    "update": "UPDATE",
+    "rechnung": "RECHNUNG",
+    "start": "START",
+    "testlauf": "TESTLAUF",
+    "frage": "FRAGE",
+    "angebot": "ANGEBOT",
+    "erinnerung": "ERINNERUNG",
+    "vertrag": "VERTRAG",
+    "build": "BUILD",
+    "ticket": "TICKET",
+    "analyse": "ANALYSE",
+    "anfrage": "ANFRAGE"
+  },
+  "project": {
+    "status": "STATUS",
+    "inProgress": "● IN ARBEIT",
+    "phaseLine": "Phase {num} · {phase} · live in {days} Tagen",
+    "approval": {
+      "waiting": "{title} wartet auf Sie.",
+      "deadline": "FRIST {deadline} · DANN BLEIBT LIVE AM {golive}",
+      "view": "↵ ANSEHEN",
+      "change": "E ÄNDERN"
+    },
+    "change": {
+      "title": "ÄNDERUNG AN {title}",
+      "placeholder": "Was soll anders sein? Zum Beispiel: Öffnungszeiten weiter oben.",
+      "cancel": "ESC ABBRECHEN",
+      "send": "⌘↵ SENDEN"
+    },
+    "approved": {
+      "title": "{title} freigegeben. Danke!",
+      "sub": "LIVE BLEIBT AM {golive} · NÄCHSTER SCHRITT: {next}"
+    },
+    "changeSent": {
+      "title": "Änderung ist bei Rialto.",
+      "sub": "ENTWURF {n} KOMMT BIS {date}"
+    },
+    "log": "LOG"
+  },
+  "log": {
+    "fileUploaded": "{file} hochgeladen",
+    "itemApproved": "{title} freigegeben",
+    "paid": "{month} · {amount} · bezahlt"
+  },
+  "meeting": {
+    "next": "NÄCHSTER TERMIN",
+    "linkBefore": "LINK KOMMT 10 MIN VORHER"
+  },
+  "package": {
+    "title": "PAKET",
+    "paid": "BEZAHLT ✓"
+  },
+  "chat": {
+    "title": "FRAGEN SIE RIALTO",
+    "you": "SIE",
+    "typing": "RIALTO SCHREIBT…",
+    "placeholder": "Nachricht schreiben…"
+  },
+  "preview": {
+    "desktop": "DESKTOP",
+    "mobile": "HANDY",
+    "approve": "↵ JA, FREIGEBEN",
+    "requestChange": "E ÄNDERUNG WÜNSCHEN"
+  },
+  "files": {
+    "title": "Dateien",
+    "count": "{count} DATEIEN · VON IHNEN UND RIALTO",
+    "name": "NAME",
+    "from": "VON",
+    "date": "DATUM",
+    "size": "GRÖSSE",
+    "you": "Sie",
+    "upload": "↑ HOCHLADEN"
+  },
+  "invoices": {
+    "title": "Rechnungen",
+    "allPaid": "ALLES BEZAHLT ✓",
+    "nOpen": "{count} OFFEN",
+    "nr": "NR.",
+    "item": "POSTEN",
+    "date": "DATUM",
+    "status": "STATUS",
+    "amount": "BETRAG",
+    "pay": "BEZAHLEN",
+    "pdf": "↓ PDF"
+  },
+  "invoiceStatus": {
+    "open": "OFFEN",
+    "paid": "BEZAHLT",
+    "announced": "ANGEKÜNDIGT",
+    "overdue": "ÜBERFÄLLIG",
+    "reminded": "ERINNERT"
+  },
+  "offer": {
+    "title": "Ihr Angebot",
+    "docLabel": "ANGEBOT {nr}",
+    "headline": "{package} für {org}",
+    "service": "LEISTUNG",
+    "amount": "BETRAG",
+    "group": {
+      "internal": {
+        "1": "Aufgaben & Checklisten",
+        "2": "Abläufe (SOPs) mit KI",
+        "3": "Lager & Bestand",
+        "4": "Inhaber-Cockpit",
+        "5": "Branchenpaket",
+        "title": "Internes System mit KI"
+      },
+      "teamApp": {
+        "1": "Aufgaben und Checklisten fürs Team",
+        "2": "Abläufe immer dabei, auch am Handy",
+        "title": "Team-App"
+      },
+      "web": {
+        "1": "Von uns gebaut, live gestellt und betreut",
+        "2": "Entwürfe prüfen und freigeben im Portal",
+        "title": "Website oder Online-Shop"
+      },
+      "ops": {
+        "1": "Hosting in der EU",
+        "2": "Eigene Domain inklusive",
+        "3": "SSL-Verschlüsselung",
+        "4": "Backups und Updates",
+        "5": "Support über das Portal",
+        "title": "Betrieb & Technik"
+      }
+    },
+    "setupOnce": "Setup (einmalig)",
+    "monthlyRow": "{package} (monatlich)",
+    "term": "Laufzeit",
+    "chip": {
+      "eu": "DATEN IN DER EU",
+      "built": "GEBAUT, LIVE, BETREUT",
+      "portal": "ALLES IM PORTAL"
+    },
+    "panel": {
+      "title": "Passt das Angebot so?",
+      "package": "PAKET",
+      "setup": "SETUP",
+      "monthly": "MONATLICH",
+      "term": "LAUFZEIT",
+      "hosting": "HOSTING & DOMAIN"
+    },
+    "agb": "Ich habe die <agb>AGB</agb> gelesen und akzeptiere sie.",
+    "agbAria": "AGB akzeptieren",
+    "approve": "↵ JA, FREIGEBEN",
+    "legal": "MIT DER FREIGABE KOMMT DER VERTRAG ZUSTANDE · ZEIT UND IP WERDEN GESPEICHERT",
+    "done": {
+      "title": "Angebot freigegeben. Danke!",
+      "sub": "FREIGEGEBEN {at} · IP GESPEICHERT",
+      "toInvoices": "→ ZU RECHNUNGEN"
+    }
+  },
+  "pay": {
+    "invoice": "RECHNUNG {nr}",
+    "netVat": "{net} NETTO + 19 % MWST.",
+    "monthlySuffix": " · MONATLICH",
+    "stripe": "Karte, SEPA-Lastschrift oder Klarna",
+    "stripeSub": "ÜBER STRIPE · SICHER",
+    "bank": "Überweisung",
+    "bankSub": "STATUS BESTÄTIGT RIALTO MANUELL",
+    "recipient": "EMPFÄNGER",
+    "iban": "IBAN",
+    "reference": "VERWENDUNGSZWECK",
+    "toStripe": "Weiter zu Stripe →",
+    "transferred": "ICH HABE ÜBERWIESEN",
+    "redirecting": "LEITET ZU STRIPE WEITER…",
+    "paid": {
+      "title": "Bezahlt. Danke!",
+      "sub": "BELEG PER E-MAIL"
+    },
+    "bankDone": {
+      "title": "Danke! Wir prüfen den Zahlungseingang.",
+      "sub": "ÜBERWEISUNG ANGEKÜNDIGT"
+    }
+  },
+  "kpi": {
+    "mrr": "MRR",
+    "mrrTrend": "▲ {pct} · 12 MON.",
+    "clients": "KUNDEN",
+    "inBuild": "{count} IM AUFBAU",
+    "approvals": "FREIGABEN",
+    "maxDays": "MAX {count} TAGE",
+    "open": "OFFEN",
+    "overdue": "{count} ÜBERFÄLLIG",
+    "reminded": "ERINNERT",
+    "leads": "LEADS",
+    "thisWeek": "DIESE WOCHE"
+  },
+  "clients": {
+    "colNum": "#",
+    "colClient": "KUNDE",
+    "colPhase": "PHASE",
+    "colNext": "NÄCHSTER SCHRITT",
+    "hint": "J/K NAVIGIEREN · ↵ ÖFFNEN ·",
+    "filterAction": "F NUR MIT AKTION",
+    "filterAll": "F ALLE ZEIGEN",
+    "add": "+ KUNDE ANLEGEN",
+    "since": "Kunde seit {month}",
+    "liveSince": "Live seit {month}",
+    "requestFrom": "Anfrage vom {date}"
+  },
+  "detail": {
+    "back": "← ALLE KUNDEN · ESC",
+    "prev": "K ↑",
+    "next": "J ↓",
+    "contact": "KONTAKT",
+    "activity": "AKTIVITÄT",
+    "viewAsClient": "ALS KUNDE ANSEHEN →",
+    "sendReminder": "ERINNERUNG SENDEN"
+  },
+  "queue": {
+    "header": "KI · HEUTE ENTSCHEIDEN · {count} OFFEN",
+    "offerWaiting": "{org} wartet seit {days} Tagen auf ein Angebot. Entwurf ist fertig.",
+    "invoiceOpen": "{org}: Rechnung {month} {days} Tage offen.",
+    "offerAccepted": "{org} hat das Angebot freigegeben. Setup-Rechnung ist raus.",
+    "changeRequested": "{org} wünscht eine Änderung: „{text}“",
+    "reviewSend": "↵ PRÜFEN & SENDEN",
+    "later": "S SPÄTER",
+    "sendReminder": "ERINNERUNG SENDEN",
+    "offerSent": "✓ ANGEBOT GESENDET",
+    "reminderSent": "✓ ERINNERUNG GESENDET",
+    "backTomorrow": "↻ MORGEN WIEDER",
+    "addClient": "KUNDE ANLEGEN →",
+    "introCalls": "Erstgespräche"
+  },
+  "pipeline": {
+    "lead": "LEAD",
+    "stage": "STUFE",
+    "next": "NÄCHSTER SCHRITT",
+    "potential": "POTENZIAL"
+  },
+  "leadStage": {
+    "intro_call": "ERSTGESPRÄCH",
+    "analysis_done": "ANALYSE ✓",
+    "offer_sent": "ANGEBOT ✓",
+    "accepted": "FREIGEGEBEN ✓"
+  },
+  "leadNext": {
+    "sendOffer": "Angebot senden",
+    "awaitReply": "Antwort abwarten",
+    "addClient": "Kunde anlegen"
+  },
+  "adminInvoices": {
+    "count": "{count} RECHNUNGEN",
+    "month": "MONAT",
+    "subscription": "ABO",
+    "remind": "ERINNERUNG SENDEN",
+    "markPaid": "ALS BEZAHLT ✓",
+    "create": "+ RECHNUNG ERSTELLEN",
+    "once": "Einmalig",
+    "monthly": "Monatlich",
+    "client": "KUNDE",
+    "item": "POSTEN",
+    "itemPlaceholder": "z. B. Setup Growth",
+    "amountNet": "BETRAG NETTO (€)",
+    "net": "Netto",
+    "vat": "MwSt. 19 %",
+    "total": "Gesamt",
+    "methods": "ZAHLUNGSARTEN",
+    "methodStripe": "Stripe: Karte, SEPA, Klarna",
+    "methodBank": "Überweisung",
+    "aboNote": "ABO: STRIPE BUCHT MONATLICH, BIS GEKÜNDIGT",
+    "createSend": "ERSTELLEN & SENDEN",
+    "sentTo": "{nr} an {org} gesendet",
+    "reminderSentTo": "Erinnerung an {org} gesendet"
+  },
+  "newClient": {
+    "title": "Neuer Kunde",
+    "sub": "ZUGANG FÜRS PORTAL",
+    "company": "FIRMA",
+    "contact": "ANSPRECHPARTNER",
+    "email": "E-MAIL",
+    "city": "ORT (OPTIONAL)",
+    "package": "PAKET",
+    "roleNote": "ROLLE DES KONTAKTS: INHABER (ALLES, BEZAHLEN, FREIGEBEN)",
+    "sendWelcome": "Willkommens-Mail senden",
+    "submit": "ANLEGEN & EINLADEN →",
+    "preview": "VORSCHAU DER E-MAIL",
+    "from": "VON {email}",
+    "to": "AN {email}",
+    "subject": "BETREFF {subject}",
+    "done": {
+      "title": "{org} ist angelegt.",
+      "sent": "EINLADUNG GESENDET AN {email}",
+      "notSent": "ZUGANG ANGELEGT · KEINE MAIL GESENDET",
+      "open": "KUNDE ÖFFNEN →",
+      "more": "WEITEREN KUNDEN ANLEGEN"
+    }
+  },
+  "inbox": {
+    "title": "Inbox",
+    "tab": "INBOX {count}",
+    "open": "{count} OFFEN",
+    "perItem": "THREAD PRO ELEMENT",
+    "element": "ELEMENT",
+    "context": "KONTEXT",
+    "placeholder": "Antwort schreiben…",
+    "openClient": "KUNDE ÖFFNEN →",
+    "allDone": "Alles beantwortet.",
+    "sendNext": "⌘↵ SENDEN & WEITER",
+    "message": "NACHRICHT",
+    "perMonthUpper": "{amount} / MONAT"
+  },
+  "templates": {
+    "vars": "VARIABLEN WERDEN BEIM SENDEN ERSETZT"
+  },
+  "templateKind": {
+    "angebot": "ANGEBOT",
+    "freigabe": "FREIGABE",
+    "erinnerung": "ERINNERUNG",
+    "start": "START"
+  },
+  "palette": {
+    "placeholder": "Springen zu… oder KI fragen",
+    "kindClient": "KUNDE",
+    "kindAdmin": "ADMIN",
+    "kindOpenClient": "KUNDE ÖFFNEN",
+    "clients": "Kunden",
+    "pipeline": "Pipeline",
+    "templates": "Vorlagen",
+    "openApprovals": "Nur offene Freigaben",
+    "whoNotPaid": "Rechnungen · wer zahlt noch nicht?",
+    "orgProject": "{org} · Projekt",
+    "orgFiles": "{org} · Dateien",
+    "orgInvoices": "{org} · Rechnungen",
+    "orgDetails": "{org} · Details",
+    "ai": "Ich suche in Kunden, Rechnungen und Nachrichten nach „{q}“…"
+  }
+}

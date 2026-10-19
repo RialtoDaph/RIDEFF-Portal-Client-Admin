@@ -1,0 +1,386 @@
+{
+  "common": {
+    "ai": "AI",
+    "send": "↵ SEND",
+    "undo": "UNDO",
+    "close": "Close",
+    "escClose": "ESC CLOSE",
+    "xClose": "× CLOSE",
+    "back": "← BACK",
+    "included": "included",
+    "copy": "Copy",
+    "copied": "Copied ✓",
+    "portal": "PORTAL",
+    "esc": "ESC"
+  },
+  "time": {
+    "yesterday": "yesterday",
+    "now": "now",
+    "months": "{count, plural, one {# month} other {# months}}"
+  },
+  "money": {
+    "perMonth": "{amount} / month",
+    "netNote": "Prices net, plus 19 % VAT",
+    "netNoteUpper": "PRICES NET, PLUS 19 % VAT"
+  },
+  "auth": {
+    "title": "Welcome back.",
+    "lead": "We’ll email you a code. No password needed.",
+    "email": "EMAIL",
+    "emailPlaceholder": "your@email.com",
+    "sendCode": "Send code →",
+    "codeSentTo": "CODE SENT TO",
+    "code": "6-DIGIT CODE",
+    "signIn": "Sign in →",
+    "otherEmail": "Different email",
+    "errEmail": "PLEASE ENTER A VALID EMAIL.",
+    "errCode": "THE CODE HAS 6 DIGITS.",
+    "footer": "SECURED · DATA IN THE EU",
+    "mfa": {
+      "challengeLabel": "6-DIGIT CODE"
+    }
+  },
+  "profile": {
+    "label": "Profile",
+    "language": "LANGUAGE",
+    "signOut": "Sign out"
+  },
+  "nav": {
+    "project": "PROJECT",
+    "files": "FILES",
+    "invoices": "INVOICES",
+    "offer": "QUOTE",
+    "search": "⌘K SEARCH",
+    "clients": "CLIENTS",
+    "inbox": "INBOX",
+    "pipeline": "PIPELINE",
+    "templates": "TEMPLATES",
+    "aiSearch": "Who hasn’t paid yet?"
+  },
+  "phase": {
+    "1": "INTRO CALL",
+    "2": "ANALYSIS",
+    "3": "BUILD",
+    "lead": "LEAD"
+  },
+  "phaseName": {
+    "3": "Build"
+  },
+  "tag": {
+    "wunsch": "REQUEST",
+    "zahlung": "PAYMENT",
+    "datei": "FILE",
+    "freigabe": "APPROVAL",
+    "update": "UPDATE",
+    "rechnung": "INVOICE",
+    "start": "ONBOARDING",
+    "testlauf": "TEST RUN",
+    "frage": "QUESTION",
+    "angebot": "QUOTE",
+    "erinnerung": "REMINDER",
+    "vertrag": "CONTRACT",
+    "analyse": "ANALYSIS"
+  },
+  "project": {
+    "status": "STATUS",
+    "inProgress": "● IN PROGRESS",
+    "phaseLine": "Phase {num} · {phase} · live in {days} days",
+    "approval": {
+      "waiting": "{title} is waiting for you.",
+      "deadline": "DUE {deadline} · THEN LAUNCH STAYS {golive}",
+      "view": "↵ VIEW",
+      "change": "E CHANGE"
+    },
+    "change": {
+      "title": "CHANGE TO {title}",
+      "placeholder": "What should be different? E.g. opening hours higher up.",
+      "cancel": "ESC CANCEL",
+      "send": "⌘↵ SEND"
+    },
+    "approved": {
+      "title": "{title} approved. Thank you!",
+      "sub": "LAUNCH STAYS {golive} · NEXT: {next}"
+    },
+    "changeSent": {
+      "title": "Rialto has your change request.",
+      "sub": "DRAFT {n} BY {date}"
+    },
+    "log": "LOG"
+  },
+  "log": {
+    "fileUploaded": "{file} uploaded",
+    "itemApproved": "{title} approved",
+    "paid": "{month} · {amount} · paid"
+  },
+  "meeting": {
+    "next": "NEXT MEETING",
+    "linkBefore": "LINK ARRIVES 10 MIN BEFORE"
+  },
+  "package": {
+    "title": "PLAN",
+    "paid": "PAID ✓"
+  },
+  "chat": {
+    "title": "ASK RIALTO",
+    "you": "YOU",
+    "typing": "RIALTO IS TYPING…",
+    "placeholder": "Write a message…"
+  },
+  "preview": {
+    "desktop": "DESKTOP",
+    "mobile": "MOBILE",
+    "approve": "↵ YES, APPROVE",
+    "requestChange": "E REQUEST CHANGE"
+  },
+  "files": {
+    "title": "Files",
+    "count": "{count} FILES · FROM YOU AND RIALTO",
+    "name": "NAME",
+    "from": "FROM",
+    "date": "DATE",
+    "size": "SIZE",
+    "you": "You",
+    "upload": "↑ UPLOAD"
+  },
+  "invoices": {
+    "title": "Invoices",
+    "allPaid": "ALL PAID ✓",
+    "nOpen": "{count} OPEN",
+    "nr": "NO.",
+    "item": "ITEM",
+    "date": "DATE",
+    "status": "STATUS",
+    "amount": "AMOUNT",
+    "pay": "PAY",
+    "pdf": "↓ PDF"
+  },
+  "invoiceStatus": {
+    "open": "OPEN",
+    "paid": "PAID",
+    "announced": "ANNOUNCED",
+    "overdue": "OVERDUE",
+    "reminded": "REMINDED"
+  },
+  "offer": {
+    "title": "Your quote",
+    "docLabel": "QUOTE {nr}",
+    "service": "SERVICE",
+    "amount": "AMOUNT",
+    "group": {
+      "internal": {
+        "1": "Tasks & checklists",
+        "2": "Workflows (SOPs) with AI",
+        "3": "Stock & inventory",
+        "4": "Owner cockpit",
+        "5": "Industry package",
+        "title": "Internal system with AI"
+      },
+      "teamApp": {
+        "1": "Tasks and checklists for the team",
+        "2": "Workflows always at hand, on the phone too",
+        "title": "Team app"
+      },
+      "web": {
+        "1": "Built, launched and maintained by us",
+        "2": "Review and approve drafts in the portal",
+        "title": "Website or online shop"
+      },
+      "ops": {
+        "1": "Hosting in the EU",
+        "2": "Your own domain included",
+        "3": "SSL encryption",
+        "4": "Backups and updates",
+        "5": "Support via the portal",
+        "title": "Operations & tech"
+      }
+    },
+    "setupOnce": "Setup (one-time)",
+    "monthlyRow": "{package} (monthly)",
+    "term": "Term",
+    "chip": {
+      "eu": "DATA IN THE EU",
+      "built": "BUILT, LIVE, MAINTAINED",
+      "portal": "EVERYTHING IN THE PORTAL"
+    },
+    "panel": {
+      "title": "Does the quote look right?",
+      "package": "PLAN",
+      "monthly": "MONTHLY",
+      "term": "TERM",
+      "hosting": "HOSTING & DOMAIN"
+    },
+    "agb": "I have read the <agb>terms</agb> and accept them.",
+    "approve": "↵ YES, APPROVE",
+    "legal": "APPROVING FORMS THE CONTRACT · TIME AND IP ADDRESS ARE RECORDED",
+    "done": {
+      "title": "Quote approved. Thank you!",
+      "toInvoices": "→ TO INVOICES"
+    }
+  },
+  "pay": {
+    "invoice": "INVOICE {nr}",
+    "monthlySuffix": " · MONTHLY",
+    "stripe": "Card, SEPA direct debit or Klarna",
+    "stripeSub": "VIA STRIPE · SECURE",
+    "bank": "Bank transfer",
+    "bankSub": "RIALTO CONFIRMS THE STATUS MANUALLY",
+    "recipient": "RECIPIENT",
+    "iban": "IBAN",
+    "reference": "REFERENCE",
+    "toStripe": "Continue to Stripe →",
+    "transferred": "I HAVE TRANSFERRED",
+    "redirecting": "REDIRECTING TO STRIPE…",
+    "paid": {
+      "title": "Paid. Thank you!",
+      "sub": "RECEIPT BY EMAIL"
+    },
+    "bankDone": {
+      "title": "Thanks! We’ll check that the payment arrived.",
+      "sub": "TRANSFER ANNOUNCED"
+    }
+  },
+  "kpi": {
+    "mrr": "MRR",
+    "mrrTrend": "▲ {pct} · 12 MO.",
+    "clients": "CLIENTS",
+    "inBuild": "{count} IN BUILD",
+    "approvals": "APPROVALS",
+    "maxDays": "MAX {count} DAYS",
+    "open": "OPEN",
+    "overdue": "{count} OVERDUE",
+    "reminded": "REMINDED",
+    "leads": "LEADS",
+    "thisWeek": "THIS WEEK"
+  },
+  "clients": {
+    "colNum": "#",
+    "colClient": "CLIENT",
+    "colPhase": "PHASE",
+    "colNext": "NEXT STEP",
+    "hint": "J/K NAVIGATE · ↵ OPEN ·",
+    "filterAction": "F ACTION NEEDED ONLY",
+    "filterAll": "F SHOW ALL",
+    "add": "+ ADD CLIENT",
+    "since": "Client since {month}",
+    "liveSince": "Live since {month}",
+    "requestFrom": "Request from {date}"
+  },
+  "detail": {
+    "back": "← ALL CLIENTS · ESC",
+    "prev": "K ↑",
+    "next": "J ↓",
+    "contact": "CONTACT",
+    "activity": "ACTIVITY",
+    "viewAsClient": "VIEW AS CLIENT →",
+    "sendReminder": "SEND REMINDER"
+  },
+  "queue": {
+    "header": "AI · DECIDE TODAY · {count} OPEN",
+    "offerWaiting": "{org} has waited {days} days for a quote. Draft is ready.",
+    "invoiceOpen": "{org}: {month} invoice open {days} days.",
+    "offerAccepted": "{org} approved the quote. The setup invoice has been sent.",
+    "changeRequested": "{org} requests a change: “{text}”",
+    "reviewSend": "↵ REVIEW & SEND",
+    "later": "S LATER",
+    "sendReminder": "SEND REMINDER",
+    "offerSent": "✓ QUOTE SENT",
+    "reminderSent": "✓ REMINDER SENT",
+    "backTomorrow": "↻ BACK TOMORROW",
+    "addClient": "ADD CLIENT →",
+    "introCalls": "Intro calls"
+  },
+  "pipeline": {
+    "lead": "LEAD",
+    "stage": "STAGE",
+    "next": "NEXT STEP",
+    "potential": "POTENTIAL"
+  },
+  "leadStage": {
+    "intro_call": "INTRO CALL",
+    "analysis_done": "ANALYSIS ✓",
+    "offer_sent": "QUOTE ✓",
+    "accepted": "APPROVED ✓"
+  },
+  "leadNext": {
+    "sendOffer": "Send quote",
+    "awaitReply": "Await reply",
+    "addClient": "Add client"
+  },
+  "adminInvoices": {
+    "count": "{count} INVOICES",
+    "month": "MONTH",
+    "remind": "SEND REMINDER",
+    "markPaid": "MARK AS PAID ✓",
+    "create": "+ CREATE INVOICE",
+    "once": "One-time",
+    "monthly": "Monthly",
+    "client": "CLIENT",
+    "item": "ITEM",
+    "amountNet": "AMOUNT NET (€)",
+    "net": "Net",
+    "vat": "VAT 19 %",
+    "total": "Total",
+    "methods": "PAYMENT METHODS",
+    "methodStripe": "Stripe: card, SEPA, Klarna",
+    "methodBank": "Bank transfer",
+    "aboNote": "SUBSCRIPTION: STRIPE CHARGES MONTHLY UNTIL CANCELLED",
+    "createSend": "CREATE & SEND"
+  },
+  "newClient": {
+    "title": "New client",
+    "sub": "PORTAL ACCESS",
+    "company": "COMPANY",
+    "contact": "CONTACT PERSON",
+    "email": "EMAIL",
+    "city": "CITY (OPTIONAL)",
+    "package": "PLAN",
+    "roleNote": "CONTACT ROLE: OWNER (EVERYTHING, PAY, APPROVE)",
+    "sendWelcome": "Send welcome email",
+    "submit": "CREATE & INVITE →",
+    "preview": "EMAIL PREVIEW",
+    "from": "FROM {email}",
+    "done": {
+      "open": "OPEN CLIENT →",
+      "more": "ADD ANOTHER CLIENT"
+    }
+  },
+  "inbox": {
+    "title": "Inbox",
+    "tab": "INBOX {count}",
+    "open": "{count} OPEN",
+    "perItem": "ONE THREAD PER ITEM",
+    "element": "ITEM",
+    "context": "CONTEXT",
+    "placeholder": "Write a reply…",
+    "openClient": "OPEN CLIENT →",
+    "allDone": "All answered.",
+    "sendNext": "⌘↵ SEND & NEXT",
+    "message": "MESSAGE",
+    "perMonthUpper": "{amount} / MONTH"
+  },
+  "templates": {
+    "vars": "VARIABLES ARE REPLACED ON SEND"
+  },
+  "templateKind": {
+    "angebot": "QUOTE",
+    "freigabe": "APPROVAL",
+    "erinnerung": "REMINDER",
+    "start": "ONBOARDING"
+  },
+  "palette": {
+    "placeholder": "Jump to… or ask AI",
+    "kindClient": "CLIENT",
+    "kindAdmin": "ADMIN",
+    "kindOpenClient": "OPEN CLIENT",
+    "clients": "Clients",
+    "pipeline": "Pipeline",
+    "templates": "Templates",
+    "openApprovals": "Open approvals only",
+    "whoNotPaid": "Invoices · who hasn’t paid?",
+    "orgProject": "{org} · Project",
+    "orgFiles": "{org} · Files",
+    "orgInvoices": "{org} · Invoices",
+    "orgDetails": "{org} · Details",
+    "ai": "Searching clients, invoices and messages for “{q}”…"
+  }
+}
