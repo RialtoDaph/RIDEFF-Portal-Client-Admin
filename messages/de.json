@@ -402,6 +402,48 @@
     "erinnerung": "ERINNERUNG",
     "start": "START"
   },
+  "email": {
+    "greeting": "Hallo {name},",
+    "signoff": "Viele Grüße\nRialto",
+    "toPortal": "Zum Portal: {url}",
+    "approvalNew": {
+      "subject": "Neu zur Freigabe: {element}",
+      "body": "{element} liegt im Portal zur Freigabe. Ein Klick genügt, oder Sie schreiben, was anders sein soll.",
+      "deadline": "Bitte bis {date} ansehen."
+    },
+    "chatReply": {
+      "subject": "Neue Nachricht zu {element}",
+      "body": "{author} hat Ihnen zu {element} geschrieben:\n\n„{excerpt}“\n\nAntworten können Sie direkt im Portal."
+    },
+    "chatTeam": {
+      "subject": "{org}: Nachricht zu {element}",
+      "body": "{author} schreibt zu {element}:\n\n„{excerpt}“"
+    },
+    "invoiceNew": {
+      "subject": "Neue Rechnung {nr}",
+      "body": "im Portal liegt eine neue Rechnung für Sie: {nr} über {amount} ({item}).\n\nFällig ist sie am {due}, bezahlen können Sie direkt im Portal."
+    },
+    "invoiceDue": {
+      "subject": "Rechnung {nr} ist am {due} fällig",
+      "body": "kurzer Hinweis: Die Rechnung {nr} über {amount} ist am {due} fällig.\n\nSie finden sie im Portal unter Rechnungen."
+    },
+    "testRunReminder": {
+      "subject": "Morgen: Testlauf {system} um {time}",
+      "body": "morgen um {time} ist der Testlauf für {system}, per Video, ca. 30 Minuten.\n\nDen Link bekommen Sie 10 Minuten vorher."
+    },
+    "phaseChange": {
+      "subject": "{project}: jetzt Phase {num} · {phase}",
+      "body": "Ihr Projekt ist einen Schritt weiter: Phase {num} · {phase}.\n\nDen aktuellen Stand sehen Sie im Portal."
+    },
+    "weekly": {
+      "subject": "Ihre Woche mit RIDEFF",
+      "body": "hier ist der Stand von {project}:\n\nPhase {num} · {phase} · {pct} %\nOffene Freigaben: {approvals}\nOffene Rechnungen: {invoices}\nNeue Dateien diese Woche: {files}"
+    },
+    "offerAccepted": {
+      "subject": "{org} hat das Angebot {nr} freigegeben",
+      "body": "{org} hat das Angebot {nr} freigegeben. Die Setup-Rechnung {invoice} ist raus."
+    }
+  },
   "palette": {
     "placeholder": "Springen zu… oder KI fragen",
     "kindClient": "KUNDE",

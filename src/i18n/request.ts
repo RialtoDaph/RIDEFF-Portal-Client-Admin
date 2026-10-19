@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 import { getRequestConfig } from "next-intl/server";
-import { defaultLocale, isLocale, LOCALE_COOKIE } from "./config";
+import { defaultLocale, isLocale, LOCALE_COOKIE, type Locale } from "./config";
 import de from "../../messages/de.json";
 
 type Messages = { [key: string]: string | Messages };
@@ -16,12 +16,13 @@ function withFallback(base: Messages, over: Messages): Messages {
   return out;
 }
 
+/** Messages for a locale, with German filling the gaps. Also used for emails. */
+export async function loadMessages(locale: Locale): Promise<Messages> {
+  return locale === "de" ? (de as Messages) : withFallback(de as Messages, (await import(`../../messages/${locale}.json`)).default);
+}
+
 export default getRequestConfig(async () => {
   const raw = (await cookies()).get(LOCALE_COOKIE)?.value;
   const locale = isLocale(raw) ? raw : defaultLocale;
-  const messages =
-    locale === "de"
-      ? (de as Messages)
-      : withFallback(de as Messages, (await import(`../../messages/${locale}.json`)).default);
-  return { locale, messages, timeZone: "Europe/Berlin" };
+  return { locale, messages: await loadMessages(locale), timeZone: "Europe/Berlin" };
 });

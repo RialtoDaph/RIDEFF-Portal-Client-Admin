@@ -7,6 +7,7 @@ import { createClient } from "@/lib/supabase/server";
 import { requireClient } from "@/lib/auth/session";
 import { loadThreadMessages, PROJECT_COOKIE, type ChatMessage } from "@/lib/client/data";
 import { MAX_FILE_BYTES } from "@/lib/client/limits";
+import { dispatchSoon } from "@/lib/email/notifications";
 
 // Every action re-checks the session; the database checks the role again
 // (decide_item and undo_item_decision accept only an Inhaber, RLS covers the rest).
@@ -49,6 +50,7 @@ export async function sendMessage(threadId: string, text: string): Promise<{ ok:
   const supabase = await createClient();
   const { error } = await supabase.from("messages").insert({ thread_id: threadId, author_id: session.userId, body });
   if (error) console.warn("sendMessage:", error.code, error.message);
+  else dispatchSoon();
   return { ok: !error };
 }
 

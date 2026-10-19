@@ -50,6 +50,12 @@ insert into public.packages (key, name, monthly_net_cents, setup_from_cents, sor
 
 insert into public.agb_versions (version, url, valid_from) values ('2026-10', 'https://rideff.com/agb', '2026-10-01');
 
+-- seed data must not notify anyone (the step-7 triggers would mail the sample clients)
+alter table public.items disable trigger items_notify;
+alter table public.messages disable trigger messages_notify;
+alter table public.invoices disable trigger invoices_notify;
+alter table public.meetings disable trigger meetings_notify;
+
 -- ── organizations ─────────────────────────────────────────────────────
 insert into public.organizations (id, name, slug, status, package, city, since, live_since, contact_name, contact_email, next_step, needs_action) values
   ('00000000-0000-4000-b000-000000000001', 'Café Linde', 'cafe-linde', 'client', 'growth', 'Leipzig', pg_temp.d('2026-09-02'), null, 'Lena Hoffmann', 'lena@cafe-linde.de',
@@ -88,8 +94,8 @@ insert into public.projects (id, org_id, name, phase, progress_pct, go_live) val
   ('00000000-0000-4000-c000-000000000005', '00000000-0000-4000-b000-000000000005', 'Core', 4, 84, null),
   ('00000000-0000-4000-c000-000000000006', '00000000-0000-4000-b000-000000000006', 'Growth', 3, 40, null);
 
-insert into public.meetings (project_id, starts_at, title) values
-  ('00000000-0000-4000-c000-000000000001', pg_temp.ts('2026-10-16 10:30'),
+insert into public.meetings (project_id, starts_at, kind, title) values
+  ('00000000-0000-4000-c000-000000000001', pg_temp.ts('2026-10-16 10:30'), 'test_run',
     pg_temp.l('Testlauf Team-App mit Can und Mia · Video', 'Team app test run with Can and Mia · video', 'Uji coba app tim dengan Can dan Mia · video'));
 
 -- ── items (one thread per item) ───────────────────────────────────────
@@ -210,3 +216,8 @@ insert into public.templates (key, kind, locale, name, subject, body, sort) valu
   ('welcome', 'start', 'en', 'Welcome to the portal', 'Welcome to the portal', E'Hi {Vorname},\n\nwelcome to RIDEFF. From today, everything about your project is in one place: status, approvals, files and invoices.\n\nTo sign in, your email address is enough. You get a code each time.\n\nSee you soon\nRialto', 5),
   ('test_run_invite', 'start', 'de', 'Testlauf-Einladung', 'Testlauf-Einladung', E'Hallo {Vorname},\n\nder Testlauf für {System} ist am {Datum} um {Uhrzeit}, per Video, ca. 30 Minuten. Bringen Sie gern jemanden aus dem Team mit.\n\nDen Link bekommen Sie 10 Minuten vorher.\n\nViele Grüße\nRialto', 6),
   ('test_run_invite', 'start', 'en', 'Test run invite', 'Test run invite', E'Hi {Vorname},\n\nthe test run for {System} is on {Datum} at {Uhrzeit}, by video, about 30 minutes. Feel free to bring someone from the team.\n\nYou''ll get the link 10 minutes before.\n\nBest regards\nRialto', 6);
+
+alter table public.items enable trigger items_notify;
+alter table public.messages enable trigger messages_notify;
+alter table public.invoices enable trigger invoices_notify;
+alter table public.meetings enable trigger meetings_notify;

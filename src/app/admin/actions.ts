@@ -7,6 +7,7 @@ import { createAdminClient } from "@/lib/supabase/admin";
 import { requireStaff } from "@/lib/auth/session";
 import { fillTemplate, sendEmail } from "@/lib/email/send";
 import { formatMoney } from "@/lib/format";
+import { dispatchSoon } from "@/lib/email/notifications";
 
 // Every action checks the staff role here (with 2FA); the database checks it again.
 
@@ -77,6 +78,7 @@ export async function replyToThread(threadId: string, text: string): Promise<{ o
   const supabase = await createClient();
   const { error } = await supabase.from("messages").insert({ thread_id: threadId, author_id: session.userId, body });
   if (error) console.warn("replyToThread:", error.code, error.message);
+  else dispatchSoon();
   await supabase.rpc("mark_thread_read", { p_thread: threadId });
   revalidatePath("/admin", "layout");
   return { ok: !error };
@@ -181,6 +183,7 @@ export async function createInvoiceAction(input: z.input<typeof newInvoice>): Pr
     console.warn("createInvoice:", error?.code, error?.message);
     return { ok: false };
   }
+  dispatchSoon();
   revalidatePath("/admin", "layout");
   return { ok: true, number: data as string };
 }

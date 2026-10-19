@@ -9,6 +9,7 @@ import { createAdminClient } from "@/lib/supabase/admin";
 import { requireClient } from "@/lib/auth/session";
 import { loadOffer } from "@/lib/client/data";
 import { buildOfferPdf } from "@/lib/offer/pdf";
+import { dispatchSoon } from "@/lib/email/notifications";
 
 /** The request's client IP. On Vercel the first x-forwarded-for entry is the visitor. */
 async function clientIp(): Promise<string> {
@@ -75,6 +76,7 @@ export async function acceptOffer(offerId: string, agbAccepted: boolean): Promis
     console.error("acceptOffer:", error.code, error.message);
     return { ok: false };
   }
+  dispatchSoon();
   revalidatePath("/", "layout");
   return { ok: true, at };
 }

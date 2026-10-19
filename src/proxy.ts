@@ -6,7 +6,7 @@ import { updateSession } from "@/lib/supabase/proxy";
 export async function proxy(request: NextRequest) {
   const { response, claims } = await updateSession(request);
   const { pathname } = request.nextUrl;
-  const isPublic = pathname === "/login" || pathname.startsWith("/api/webhooks/");
+  const isPublic = pathname === "/login" || pathname.startsWith("/api/webhooks/") || pathname.startsWith("/api/cron/");
   if (!claims && !isPublic) {
     const url = request.nextUrl.clone();
     url.pathname = "/login";
