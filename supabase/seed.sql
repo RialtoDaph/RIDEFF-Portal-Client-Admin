@@ -94,9 +94,10 @@ insert into public.projects (id, org_id, name, phase, progress_pct, go_live) val
   ('00000000-0000-4000-c000-000000000005', '00000000-0000-4000-b000-000000000005', 'Core', 4, 84, null),
   ('00000000-0000-4000-c000-000000000006', '00000000-0000-4000-b000-000000000006', 'Growth', 3, 40, null);
 
-insert into public.meetings (project_id, starts_at, kind, title) values
+insert into public.meetings (project_id, starts_at, kind, title, subject) values
   ('00000000-0000-4000-c000-000000000001', pg_temp.ts('2026-10-16 10:30'), 'test_run',
-    pg_temp.l('Testlauf Team-App mit Can und Mia · Video', 'Team app test run with Can and Mia · video', 'Uji coba app tim dengan Can dan Mia · video'));
+    pg_temp.l('Testlauf Team-App mit Can und Mia · Video', 'Team app test run with Can and Mia · video', 'Uji coba app tim dengan Can dan Mia · video'),
+    pg_temp.l('Team-App', 'team app', 'app tim'));
 
 -- ── items (one thread per item) ───────────────────────────────────────
 insert into public.items (id, project_id, title, kind, status, deadline, draft_no, question, whats_new, revision_due, created_by, created_at) values

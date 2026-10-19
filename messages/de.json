@@ -299,6 +299,51 @@
     "viewAsClient": "ALS KUNDE ANSEHEN →",
     "sendReminder": "ERINNERUNG SENDEN"
   },
+  "projectEdit": {
+    "title": "PROJEKT BEARBEITEN",
+    "project": "PROJEKT",
+    "newProject": "+ NEUES PROJEKT",
+    "projectName": "NAME DES PROJEKTS",
+    "create": "ANLEGEN →",
+    "cancel": "ABBRECHEN",
+    "phase": "PHASE",
+    "progress": "FORTSCHRITT IN %",
+    "goLive": "GO-LIVE (OPTIONAL)",
+    "save": "SPEICHERN",
+    "saved": "GESPEICHERT ✓",
+    "failed": "SPEICHERN FEHLGESCHLAGEN. BITTE NOCH EINMAL VERSUCHEN.",
+    "addApproval": "+ FREIGABE",
+    "addFiles": "+ DATEIEN",
+    "addTestRun": "+ TESTLAUF",
+    "translations": "+ EN / ID",
+    "approval": {
+      "title": "TITEL",
+      "question": "FRAGE AN DEN KUNDEN",
+      "whatsNew": "WAS IST NEU · EINE ZEILE PRO PUNKT",
+      "draftNo": "ENTWURF NR.",
+      "deadline": "FRIST",
+      "afterApproval": "NÄCHSTER SCHRITT NACH DER FREIGABE (OPTIONAL)",
+      "previewDesktop": "VORSCHAU DESKTOP",
+      "previewMobile": "VORSCHAU MOBIL (OPTIONAL)",
+      "pickImage": "BILD WÄHLEN",
+      "submit": "ZUR FREIGABE SENDEN →",
+      "done": "FREIGABE GESENDET ✓ · DER KUNDE WIRD BENACHRICHTIGT"
+    },
+    "files": {
+      "hint": "Der Kunde sieht die Dateien sofort unter Dateien.",
+      "pick": "DATEIEN WÄHLEN",
+      "done": "{count, plural, one {# DATEI} other {# DATEIEN}} HOCHGELADEN ✓"
+    },
+    "testRun": {
+      "title": "TITEL IM PORTAL",
+      "subject": "WAS WIRD GETESTET",
+      "date": "DATUM",
+      "time": "UHRZEIT",
+      "link": "VIDEO-LINK (OPTIONAL)",
+      "submit": "TESTLAUF EINTRAGEN →",
+      "done": "TESTLAUF EINGETRAGEN ✓ · EINLADUNG GEHT RAUS"
+    }
+  },
   "queue": {
     "header": "KI · HEUTE ENTSCHEIDEN · {count} OFFEN",
     "offerWaiting": "{org} wartet seit {days} Tagen auf ein Angebot. Entwurf ist fertig.",

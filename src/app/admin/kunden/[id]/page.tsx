@@ -9,6 +9,7 @@ import { logText, tagColor } from "@/lib/client/log";
 import { formatDayMonth, formatMoney, formatMonthYear } from "@/lib/format";
 import { DetailNav } from "@/components/admin/detail-nav";
 import { RemindButton } from "@/components/admin/remind-button";
+import { ProjectEditor } from "@/components/admin/project-editor";
 
 const label = "font-mono text-[10px] tracking-[0.12em] text-muted";
 const inner = "flex flex-col gap-[6px] rounded-inner border border-line bg-inner p-4";
@@ -24,9 +25,10 @@ export default async function ClientDetail({ params }: PageProps<"/admin/kunden/
   const c = clients[idx];
 
   const supabase = await createClient();
-  const [log, overdue] = await Promise.all([
+  const [log, overdue, projects] = await Promise.all([
     supabase.from("activity_log").select("id, created_at, tag, event, params, text").eq("org_id", id).order("created_at", { ascending: false }).limit(30),
     supabase.from("invoices").select("id").eq("org_id", id).in("status", ["open", "overdue"]).lt("due_on", new Date().toISOString().slice(0, 10)).order("due_on").limit(1).maybeSingle(),
+    supabase.from("projects").select("id, name, phase, progress_pct, go_live").eq("org_id", id).order("created_at"),
   ]);
   const canRemind = !!overdue.data && (session.staffRole === "owner" || session.staffRole === "finanzen");
 
@@ -92,6 +94,13 @@ export default async function ClientDetail({ params }: PageProps<"/admin/kunden/
           )}
         </div>
       </div>
+      {c.status === "client" && (
+        <ProjectEditor
+          orgId={c.id}
+          projects={(projects.data ?? []).map((p) => ({ id: p.id, name: p.name, phase: p.phase, pct: p.progress_pct, goLive: p.go_live }))}
+          canApprove={session.staffRole === "owner" || session.staffRole === "builder"}
+        />
+      )}
       <div className="flex flex-col">
         <h2 className={`${label} m-0 pb-[6px] font-normal`}>{t("detail.activity")}</h2>
         <ol className="m-0 list-none p-0">
