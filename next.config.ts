@@ -8,6 +8,7 @@ const nextConfig: NextConfig = {
   // PDF generation reads the Geist TTF files at runtime
   outputFileTracingIncludes: {
     "/angebot": ["./node_modules/geist/dist/fonts/geist-sans/Geist-{Regular,Bold}.ttf", "./node_modules/geist/dist/fonts/geist-mono/GeistMono-Regular.ttf"],
+    "/rechnungen/*/pdf": ["./node_modules/geist/dist/fonts/geist-sans/Geist-{Regular,Bold}.ttf", "./node_modules/geist/dist/fonts/geist-mono/GeistMono-Regular.ttf"],
   },
   turbopack: {
     rules: {

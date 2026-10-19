@@ -200,14 +200,17 @@ export type InvoiceRow = {
   issuedOn: string;
   status: "open" | "announced" | "paid" | "overdue";
   netCents: number;
-  hasPdf: boolean;
+  grossCents: number;
+  kind: "once" | "subscription";
+  allowStripe: boolean;
+  allowBank: boolean;
 };
 
 export async function loadInvoices(orgId: string): Promise<InvoiceRow[]> {
   const supabase = await createClient();
   const { data } = await supabase
     .from("invoices")
-    .select("id, number, description, issued_on, status, net_cents, pdf_path")
+    .select("id, number, description, issued_on, status, net_cents, gross_cents, kind, allow_stripe, allow_bank")
     .eq("org_id", orgId)
     .order("issued_on", { ascending: false })
     .order("number", { ascending: false });
@@ -218,7 +221,10 @@ export async function loadInvoices(orgId: string): Promise<InvoiceRow[]> {
     issuedOn: i.issued_on,
     status: i.status,
     netCents: i.net_cents,
-    hasPdf: !!i.pdf_path,
+    grossCents: i.gross_cents,
+    kind: i.kind,
+    allowStripe: i.allow_stripe,
+    allowBank: i.allow_bank,
   }));
 }
 
