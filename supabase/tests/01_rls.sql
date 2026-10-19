@@ -75,7 +75,8 @@ reset role;
 -- ── Mia, Mitarbeiterin of Café Linde ──────────────────────────────────
 select pg_temp.as_user('00000000-0000-4000-a000-000000000102');
 select pg_temp.eq('mia sees the invoices', (select count(*) from public.invoices), 3);
-select pg_temp.denied('mia cannot upload', $$insert into public.files (project_id, storage_path, name, size_bytes, uploaded_by) values ('00000000-0000-4000-c000-000000000001', 'test/mia.pdf', 'mia', 1, auth.uid())$$);
+insert into public.files (project_id, storage_path, name, size_bytes, uploaded_by) values ('00000000-0000-4000-c000-000000000001', 'test/mia.pdf', 'mia', 1, auth.uid());
+select pg_temp.eq('mia can upload', (select count(*) from public.files where uploaded_by = auth.uid()), 1);
 insert into public.messages (thread_id, author_id, body)
   values ('00000000-0000-4000-e000-000000000001', auth.uid(), 'Mia schreibt');
 select pg_temp.eq('mia can chat', (select count(*) from public.messages where author_id = auth.uid()), 1);

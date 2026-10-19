@@ -131,6 +131,8 @@ insert into public.messages (thread_id, author_id, body, created_at, read_at) va
   ('00000000-0000-4000-e000-000000000005', '00000000-0000-4000-a000-000000000301', 'Perfekt, danke Rialto.', pg_temp.ts('2026-10-10 10:31'), pg_temp.ts('2026-10-10 11:00'));
 
 -- ── files (Café Linde). The storage objects are not seeded. ────────────
+-- (the upload trigger would add LOG lines; the seed brings its own)
+alter table public.files disable trigger files_log;
 insert into public.files (project_id, storage_path, name, ext, size_bytes, uploaded_by, created_at) values
   ('00000000-0000-4000-c000-000000000001', 'seed/cafe-linde/startseite-entwurf-2.fig', 'Startseite, Entwurf 2', 'FIG', 4404019, '00000000-0000-4000-a000-000000000001', pg_temp.ts('2026-10-12 17:45')),
   ('00000000-0000-4000-c000-000000000001', 'seed/cafe-linde/schichten-herbst.xlsx', 'schichten-herbst', 'XLSX', 38912, '00000000-0000-4000-a000-000000000101', pg_temp.ts('2026-09-29 15:40')),
@@ -138,6 +140,11 @@ insert into public.files (project_id, storage_path, name, ext, size_bytes, uploa
   ('00000000-0000-4000-c000-000000000001', 'seed/cafe-linde/analyse-und-plan.pdf', 'Analyse und Plan', 'PDF', 1153434, '00000000-0000-4000-a000-000000000001', pg_temp.ts('2026-09-16 10:00')),
   ('00000000-0000-4000-c000-000000000001', 'seed/cafe-linde/logo-cafe-linde.png', 'Logo Café Linde', 'PNG', 430080, '00000000-0000-4000-a000-000000000101', pg_temp.ts('2026-09-04 09:00')),
   ('00000000-0000-4000-c000-000000000001', 'seed/cafe-linde/angebot-growth-unterschrieben.pdf', 'Angebot Growth, unterschrieben', 'PDF', 188416, '00000000-0000-4000-a000-000000000101', pg_temp.ts('2026-09-02 11:00'));
+
+alter table public.files enable trigger files_log;
+
+update public.items set after_approval = pg_temp.l('Testlauf Do', 'Test run Thu', 'Uji coba Kam')
+  where id = '00000000-0000-4000-d000-000000000001';
 
 -- ── activity (LOG for the client, AKTIVITÄT for the team) ─────────────
 insert into public.activity_log (org_id, project_id, tag, event, params, text, client_visible, created_at) values
