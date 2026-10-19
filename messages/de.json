@@ -363,18 +363,39 @@
     "lead": "LEAD",
     "stage": "STUFE",
     "next": "NÄCHSTER SCHRITT",
-    "potential": "POTENZIAL"
+    "potential": "POTENZIAL",
+    "addLead": "+ LEAD",
+    "actions": "Aktionen für {name}",
+    "moveTo": "VERSCHIEBEN NACH",
+    "markLost": "VERLOREN …",
+    "lostReason": "GRUND (OPTIONAL)",
+    "confirmLost": "ALS VERLOREN MARKIEREN",
+    "moved": "{name} → {stage}",
+    "failed": "SPEICHERN FEHLGESCHLAGEN. BITTE NOCH EINMAL VERSUCHEN.",
+    "keys": "[ ] STUFE ZURÜCK / WEITER"
   },
   "leadStage": {
     "intro_call": "ERSTGESPRÄCH",
     "analysis_done": "ANALYSE ✓",
     "offer_sent": "ANGEBOT ✓",
-    "accepted": "FREIGEGEBEN ✓"
+    "accepted": "FREIGEGEBEN ✓",
+    "lost": "VERLOREN"
   },
   "leadNext": {
     "sendOffer": "Angebot senden",
     "awaitReply": "Antwort abwarten",
     "addClient": "Kunde anlegen"
+  },
+  "newLead": {
+    "title": "Neuer Lead",
+    "contact": "ANSPRECHPARTNER (OPTIONAL)",
+    "email": "E-MAIL (OPTIONAL)",
+    "phone": "TELEFON (OPTIONAL)",
+    "source": "QUELLE (OPTIONAL)",
+    "notes": "NOTIZ (OPTIONAL)",
+    "introCall": "ERSTGESPRÄCH (OPTIONAL)",
+    "potential": "POTENZIAL € / MONAT (OPTIONAL)",
+    "submit": "LEAD ANLEGEN →"
   },
   "adminInvoices": {
     "count": "{count} RECHNUNGEN",
