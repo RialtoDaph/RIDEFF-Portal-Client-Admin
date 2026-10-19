@@ -123,7 +123,8 @@
     "fileUploaded": "{file} hochgeladen",
     "itemApproved": "{title} freigegeben",
     "paid": "{month} · {amount} · bezahlt",
-    "changeRequested": "Änderung {title}: {text}"
+    "changeRequested": "Änderung {title}: {text}",
+    "offerAccepted": "{package} unterschrieben"
   },
   "preview": {
     "newIn": "NEU IN ENTWURF {n}",

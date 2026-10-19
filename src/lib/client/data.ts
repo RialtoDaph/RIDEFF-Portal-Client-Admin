@@ -221,3 +221,40 @@ export async function loadInvoices(orgId: string): Promise<InvoiceRow[]> {
     hasPdf: !!i.pdf_path,
   }));
 }
+
+export type Offer = {
+  id: string;
+  number: string;
+  packageName: string;
+  setupCents: number;
+  monthlyCents: number;
+  termMonths: number;
+  groups: string[];
+  status: "sent" | "accepted";
+  acceptedAt: string | null;
+};
+
+/** The lead's current quote (sent or accepted). Drafts are invisible to clients (RLS). */
+export async function loadOffer(orgId: string): Promise<Offer | null> {
+  const supabase = await createClient();
+  const { data } = await supabase
+    .from("offers")
+    .select("id, number, setup_net_cents, monthly_net_cents, term_months, included_groups, status, accepted_at, packages(name)")
+    .eq("org_id", orgId)
+    .in("status", ["sent", "accepted"])
+    .order("created_at", { ascending: false })
+    .limit(1)
+    .maybeSingle();
+  if (!data) return null;
+  return {
+    id: data.id,
+    number: data.number,
+    packageName: (data.packages as unknown as { name: string } | null)?.name ?? "",
+    setupCents: data.setup_net_cents,
+    monthlyCents: data.monthly_net_cents,
+    termMonths: data.term_months,
+    groups: data.included_groups ?? [],
+    status: data.status,
+    acceptedAt: data.accepted_at,
+  };
+}

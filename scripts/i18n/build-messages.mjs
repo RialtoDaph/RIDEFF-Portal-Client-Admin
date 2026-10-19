@@ -131,6 +131,7 @@ const M = {
   'log.changeRequested': { de: 'Änderung {title}: {text}', en: '{title} change: {text}', from: 'Änderung Startseite:' },
   'project.phaseLineShort': { de: 'Phase {num} · {phase}', en: 'Phase {num} · {phase}', id: 'Fase {num} · {phase}', from: 'Phase 03 · Bauen · live in 11 Tagen' },
   'preview.newIn': { de: 'NEU IN ENTWURF {n}', en: 'NEW IN DRAFT {n}', id: 'BARU DI DRAF {n}', from: 'NEU IN ENTWURF 2' },
+  'log.offerAccepted': { de: '{package} unterschrieben', en: '{package} signed', from: 'Whole system unterschrieben' },
   'meeting.next': 'NÄCHSTER TERMIN',
   'meeting.linkBefore': 'LINK KOMMT 10 MIN VORHER',
   'package.title': 'PAKET',

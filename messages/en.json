@@ -112,7 +112,8 @@
     "fileUploaded": "{file} uploaded",
     "itemApproved": "{title} approved",
     "paid": "{month} · {amount} · paid",
-    "changeRequested": "{title} change: {text}"
+    "changeRequested": "{title} change: {text}",
+    "offerAccepted": "{package} signed"
   },
   "preview": {
     "newIn": "NEW IN DRAFT {n}",

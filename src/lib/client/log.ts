@@ -13,6 +13,8 @@ export function logText(entry: Pick<LogEntry, "event" | "params" | "text">, t: T
       return t("log.itemApproved", { title });
     case "changeRequested":
       return t("log.changeRequested", { title, text: String(p.text ?? "") });
+    case "offerAccepted":
+      return t("log.offerAccepted", { package: String(p.package ?? "") });
     case "fileUploaded":
       return t("log.fileUploaded", { file: String(p.file ?? "") });
     case "paid":
