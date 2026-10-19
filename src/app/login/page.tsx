@@ -4,11 +4,12 @@ import { getSession, homeFor } from "@/lib/auth/session";
 import { LoginShell } from "./login-shell";
 import { LoginForm } from "./login-form";
 
-export default async function LoginPage() {
+export default async function LoginPage({ searchParams }: PageProps<"/login">) {
   const session = await getSession();
   const home = session && homeFor(session);
   if (home) redirect(home);
   const t = await getTranslations("auth");
+  const linkFailed = (await searchParams).e === "link";
   return (
     <LoginShell
       heading={
@@ -18,7 +19,7 @@ export default async function LoginPage() {
         </div>
       }
     >
-      <LoginForm />
+      <LoginForm initialError={linkFailed ? t("errLink") : null} />
     </LoginShell>
   );
 }

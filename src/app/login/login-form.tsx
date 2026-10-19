@@ -7,12 +7,12 @@ import { codeInput, fieldInput, fieldLabel, FormError, primaryButton } from "./f
 
 const EMAIL = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 
-export function LoginForm() {
+export function LoginForm({ initialError = null }: { initialError?: string | null }) {
   const t = useTranslations("auth");
   const [step, setStep] = useState<1 | 2>(1);
   const [email, setEmail] = useState("");
   const [code, setCode] = useState("");
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(initialError);
   const [pending, start] = useTransition();
 
   const fail = (r: LoginResult) => {
