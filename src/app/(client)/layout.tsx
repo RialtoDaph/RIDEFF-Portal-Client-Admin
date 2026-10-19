@@ -2,6 +2,7 @@ import { getTranslations } from "next-intl/server";
 import { AppHeader } from "@/components/app-header";
 import { initials, requireClient } from "@/lib/auth/session";
 import { createClient } from "@/lib/supabase/server";
+import { getProjects } from "@/lib/client/data";
 
 export default async function ClientLayout({ children }: LayoutProps<"/">) {
   const session = await requireClient();
@@ -22,13 +23,15 @@ export default async function ClientLayout({ children }: LayoutProps<"/">) {
     ];
   }
 
+  const { projects, current } = await getProjects(org.id);
   const name = org.name.toLocaleUpperCase("de-DE");
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col wide:h-screen">
       <AppHeader
         variant="client"
         address={{ wide: `RIDEFF://${name.replace(/\s+/g, "-")}`, narrow: name }}
         tabs={tabs}
+        projects={current ? { list: projects.map((p) => ({ id: p.id, name: p.name })), current: current.id } : undefined}
         user={{ name: session.profile.fullName, email: session.profile.email, initials: initials(session.profile.fullName, session.profile.email) }}
       />
       {children}

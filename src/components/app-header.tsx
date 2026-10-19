@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { BrandMark } from "./brand-mark";
 import { ProfileMenu, type MenuUser } from "./profile-menu";
+import { ProjectPicker } from "./client/project-picker";
 
 export type HeaderTab = { href: string; label: string; exact?: boolean };
 
@@ -13,10 +14,12 @@ type Props = {
   tabs: HeaderTab[];
   variant: "client" | "admin";
   user: MenuUser;
+  /** client area only, when the org has more than one project */
+  projects?: { list: { id: string; name: string }[]; current: string };
 };
 
 /** Top bar shared by the client area and /admin: address, tabs, search, profile. */
-export function AppHeader({ address, tabs, variant, user }: Props) {
+export function AppHeader({ address, tabs, variant, user, projects }: Props) {
   const pathname = usePathname();
   const t = useTranslations();
   const isActive = (tab: HeaderTab) =>
@@ -31,6 +34,7 @@ export function AppHeader({ address, tabs, variant, user }: Props) {
         <span className="wide:hidden">{address.narrow}</span>
         <span className="hidden wide:inline">{address.wide}</span>
       </span>
+      {projects && projects.list.length > 1 && <ProjectPicker projects={projects.list} current={projects.current} />}
       <nav className="flex gap-[18px]">
         {tabs.map((tab) => {
           const on = isActive(tab);

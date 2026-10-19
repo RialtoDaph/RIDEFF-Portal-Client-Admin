@@ -128,6 +128,9 @@ const M = {
   'log.fileUploaded': { de: '{file} hochgeladen', en: '{file} uploaded', id: '{file} diunggah', from: 'schichten-herbst.xlsx hochgeladen' },
   'log.itemApproved': { de: '{title} freigegeben', en: '{title} approved', id: '{title} disetujui', from: 'Startseite, Entwurf 2 freigegeben' },
   'log.paid': { de: '{month} · {amount} · bezahlt', en: '{month} · {amount} · paid', id: '{month} · {amount} · lunas', from: 'Oktober · €249 · bezahlt' },
+  'log.changeRequested': { de: 'Änderung {title}: {text}', en: '{title} change: {text}', from: 'Änderung Startseite:' },
+  'project.phaseLineShort': { de: 'Phase {num} · {phase}', en: 'Phase {num} · {phase}', id: 'Fase {num} · {phase}', from: 'Phase 03 · Bauen · live in 11 Tagen' },
+  'preview.newIn': { de: 'NEU IN ENTWURF {n}', en: 'NEW IN DRAFT {n}', id: 'BARU DI DRAF {n}', from: 'NEU IN ENTWURF 2' },
   'meeting.next': 'NÄCHSTER TERMIN',
   'meeting.linkBefore': 'LINK KOMMT 10 MIN VORHER',
   'package.title': 'PAKET',
@@ -150,6 +153,9 @@ const M = {
   'files.size': 'GRÖSSE',
   'files.you': 'Sie',
   'files.upload': '↑ HOCHLADEN',
+  // Not in the prototype. Proposed wording, waiting for the owner's OK.
+  'files.uploadFailed': { de: 'HOCHLADEN FEHLGESCHLAGEN. BITTE NOCH EINMAL VERSUCHEN.', proposed: true },
+  'files.tooLarge': { de: 'DATEI ZU GROSS · MAX. 50 MB', proposed: true },
 
   // ── client: Rechnungen ───────────────────────────────────
   'invoices.title': 'Rechnungen',

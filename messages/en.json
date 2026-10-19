@@ -105,12 +105,21 @@
       "title": "Rialto has your change request.",
       "sub": "DRAFT {n} BY {date}"
     },
-    "log": "LOG"
+    "log": "LOG",
+    "phaseLineShort": "Phase {num} · {phase}"
   },
   "log": {
     "fileUploaded": "{file} uploaded",
     "itemApproved": "{title} approved",
-    "paid": "{month} · {amount} · paid"
+    "paid": "{month} · {amount} · paid",
+    "changeRequested": "{title} change: {text}"
+  },
+  "preview": {
+    "newIn": "NEW IN DRAFT {n}",
+    "desktop": "DESKTOP",
+    "mobile": "MOBILE",
+    "approve": "↵ YES, APPROVE",
+    "requestChange": "E REQUEST CHANGE"
   },
   "meeting": {
     "next": "NEXT MEETING",
@@ -125,12 +134,6 @@
     "you": "YOU",
     "typing": "RIALTO IS TYPING…",
     "placeholder": "Write a message…"
-  },
-  "preview": {
-    "desktop": "DESKTOP",
-    "mobile": "MOBILE",
-    "approve": "↵ YES, APPROVE",
-    "requestChange": "E REQUEST CHANGE"
   },
   "files": {
     "title": "Files",

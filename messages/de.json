@@ -116,12 +116,21 @@
       "title": "Änderung ist bei Rialto.",
       "sub": "ENTWURF {n} KOMMT BIS {date}"
     },
-    "log": "LOG"
+    "log": "LOG",
+    "phaseLineShort": "Phase {num} · {phase}"
   },
   "log": {
     "fileUploaded": "{file} hochgeladen",
     "itemApproved": "{title} freigegeben",
-    "paid": "{month} · {amount} · bezahlt"
+    "paid": "{month} · {amount} · bezahlt",
+    "changeRequested": "Änderung {title}: {text}"
+  },
+  "preview": {
+    "newIn": "NEU IN ENTWURF {n}",
+    "desktop": "DESKTOP",
+    "mobile": "HANDY",
+    "approve": "↵ JA, FREIGEBEN",
+    "requestChange": "E ÄNDERUNG WÜNSCHEN"
   },
   "meeting": {
     "next": "NÄCHSTER TERMIN",
@@ -137,12 +146,6 @@
     "typing": "RIALTO SCHREIBT…",
     "placeholder": "Nachricht schreiben…"
   },
-  "preview": {
-    "desktop": "DESKTOP",
-    "mobile": "HANDY",
-    "approve": "↵ JA, FREIGEBEN",
-    "requestChange": "E ÄNDERUNG WÜNSCHEN"
-  },
   "files": {
     "title": "Dateien",
     "count": "{count} DATEIEN · VON IHNEN UND RIALTO",
@@ -151,7 +154,9 @@
     "date": "DATUM",
     "size": "GRÖSSE",
     "you": "Sie",
-    "upload": "↑ HOCHLADEN"
+    "upload": "↑ HOCHLADEN",
+    "uploadFailed": "HOCHLADEN FEHLGESCHLAGEN. BITTE NOCH EINMAL VERSUCHEN.",
+    "tooLarge": "DATEI ZU GROSS · MAX. 50 MB"
   },
   "invoices": {
     "title": "Rechnungen",

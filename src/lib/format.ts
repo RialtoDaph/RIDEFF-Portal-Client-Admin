@@ -66,3 +66,26 @@ export function daysUntil(date: Date | string, now: Date = new Date()): number {
   const d = typeof date === "string" ? new Date(date.length === 10 ? date + "T12:00:00Z" : date) : date;
   return Math.round((day(d) - day(now)) / 86_400_000);
 }
+
+/** "12.10 18:04" for the LOG. */
+export function formatLogTime(date: Date | string, locale: Locale): string {
+  return `${formatDayMonth(date, locale)} ${formatTime(date, locale)}`;
+}
+
+/** "4,2 MB" · "38 KB" */
+export function formatSize(bytes: number, locale: Locale): string {
+  if (bytes > 1_048_576) {
+    return new Intl.NumberFormat(TAG[locale], { minimumFractionDigits: 1, maximumFractionDigits: 1 }).format(bytes / 1_048_576) + " MB";
+  }
+  return Math.max(1, Math.round(bytes / 1024)) + " KB";
+}
+
+/** Chat time: "jetzt", "10:30" today, "gestern", else "12.10". */
+export function chatTime(date: Date | string, locale: Locale, labels: { now: string; yesterday: string }, now = new Date()): string {
+  const d = typeof date === "string" ? new Date(date) : date;
+  if (now.getTime() - d.getTime() < 60_000) return labels.now;
+  const days = -daysUntil(d, now);
+  if (days === 0) return formatTime(d, locale);
+  if (days === 1) return labels.yesterday;
+  return formatDayMonth(d, locale);
+}

@@ -105,12 +105,20 @@
       "title": "Permintaan perubahan sudah di Rialto.",
       "sub": "DRAF {n} PALING LAMBAT {date}"
     },
-    "log": "LOG"
+    "log": "LOG",
+    "phaseLineShort": "Fase {num} · {phase}"
   },
   "log": {
     "fileUploaded": "{file} diunggah",
     "itemApproved": "{title} disetujui",
     "paid": "{month} · {amount} · lunas"
+  },
+  "preview": {
+    "newIn": "BARU DI DRAF {n}",
+    "desktop": "DESKTOP",
+    "mobile": "PONSEL",
+    "approve": "↵ YA, SETUJUI",
+    "requestChange": "E MINTA PERUBAHAN"
   },
   "meeting": {
     "next": "JADWAL BERIKUTNYA",
@@ -125,12 +133,6 @@
     "you": "ANDA",
     "typing": "RIALTO MENGETIK…",
     "placeholder": "Tulis pesan…"
-  },
-  "preview": {
-    "desktop": "DESKTOP",
-    "mobile": "PONSEL",
-    "approve": "↵ YA, SETUJUI",
-    "requestChange": "E MINTA PERUBAHAN"
   },
   "files": {
     "title": "File",
