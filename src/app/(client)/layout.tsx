@@ -1,5 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { AppHeader } from "@/components/app-header";
+import { Palette } from "@/components/palette";
 import { initials, requireClient } from "@/lib/auth/session";
 import { createClient } from "@/lib/supabase/server";
 import { getProjects } from "@/lib/client/data";
@@ -7,6 +8,7 @@ import { getProjects } from "@/lib/client/data";
 export default async function ClientLayout({ children }: LayoutProps<"/">) {
   const session = await requireClient();
   const t = await getTranslations("nav");
+  const tp = await getTranslations("palette");
   const org = session.membership.org;
 
   // A lead sees only the quote, plus invoices once one exists.
@@ -35,6 +37,15 @@ export default async function ClientLayout({ children }: LayoutProps<"/">) {
         user={{ name: session.profile.fullName, email: session.profile.email, initials: initials(session.profile.fullName, session.profile.email) }}
       />
       {children}
+      <Palette
+        items={org.status === "client"
+          ? [
+              { label: tp("orgProject", { org: org.name }), kind: tp("kindClient"), href: "/" },
+              { label: tp("orgFiles", { org: org.name }), kind: tp("kindClient"), href: "/dateien" },
+              { label: tp("orgInvoices", { org: org.name }), kind: tp("kindClient"), href: "/rechnungen" },
+            ]
+          : tabs.map((tab) => ({ label: tab.label, kind: tp("kindClient"), href: tab.href }))}
+      />
     </div>
   );
 }

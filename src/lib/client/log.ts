@@ -19,6 +19,8 @@ export function logText(entry: Pick<LogEntry, "event" | "params" | "text">, t: T
       return t("log.reminderSent");
     case "offerSent":
       return t("log.offerSent", { nr: String(p.nr ?? "") });
+    case "invoiceCreated":
+      return t("log.invoiceCreated", { nr: String(p.nr ?? ""), amount: formatMoney(Number(p.amount_cents ?? 0), locale) });
     case "fileUploaded":
       return t("log.fileUploaded", { file: String(p.file ?? "") });
     case "paid":

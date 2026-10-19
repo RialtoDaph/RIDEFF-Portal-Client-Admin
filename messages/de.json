@@ -126,7 +126,8 @@
     "changeRequested": "Änderung {title}: {text}",
     "offerAccepted": "{package} unterschrieben",
     "reminderSent": "Erinnerung gesendet",
-    "offerSent": "Angebot {nr} gesendet"
+    "offerSent": "Angebot {nr} gesendet",
+    "invoiceCreated": "Rechnung {nr} · {amount}"
   },
   "preview": {
     "newIn": "NEU IN ENTWURF {n}",

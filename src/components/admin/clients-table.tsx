@@ -20,10 +20,10 @@ export type TableRow = {
 const cols = "grid grid-cols-[24px_minmax(0,1.3fr)_76px_minmax(0,1.5fr)_56px_16px] gap-3 px-5";
 
 /** Kunden table. J/K select, ↵ opens, F toggles "Nur mit Aktion". */
-export function ClientsTable({ rows }: { rows: TableRow[] }) {
+export function ClientsTable({ rows, initialFilter = false }: { rows: TableRow[]; initialFilter?: boolean }) {
   const t = useTranslations();
   const router = useRouter();
-  const [filter, setFilter] = useState(false);
+  const [filter, setFilter] = useState(initialFilter);
   const [sel, setSel] = useState(0);
   const shown = filter ? rows.filter((r) => r.needsAction) : rows;
   const current = Math.min(sel, Math.max(0, shown.length - 1));

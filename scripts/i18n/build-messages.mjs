@@ -134,6 +134,7 @@ const M = {
   'log.offerAccepted': { de: '{package} unterschrieben', en: '{package} signed', from: 'Whole system unterschrieben' },
   'log.reminderSent': 'Erinnerung gesendet',
   'log.offerSent': { de: 'Angebot {nr} gesendet', proposed: true },
+  'log.invoiceCreated': { de: 'Rechnung {nr} · {amount}', proposed: true },
   'meeting.next': 'NÄCHSTER TERMIN',
   'meeting.linkBefore': 'LINK KOMMT 10 MIN VORHER',
   'package.title': 'PAKET',

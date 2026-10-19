@@ -151,3 +151,47 @@ export async function createClientAction(input: z.input<typeof newClient>): Prom
   revalidatePath("/admin", "layout");
   return { ok: true, orgId: orgId as string, sent };
 }
+
+// ── Rechnungen ─────────────────────────────────────────────────────────
+const newInvoice = z.object({
+  orgId: uuid,
+  kind: z.enum(["once", "subscription"]),
+  description: z.string().trim().min(1).max(200),
+  netCents: z.number().int().positive().max(100_000_000),
+  allowStripe: z.boolean(),
+  allowBank: z.boolean(),
+});
+
+/** "ERSTELLEN & SENDEN": the invoice appears in the client's Rechnungen right away. */
+export async function createInvoiceAction(input: z.input<typeof newInvoice>): Promise<{ ok: true; number: string } | { ok: false }> {
+  await requireStaff("finanzen");
+  const parsed = newInvoice.safeParse(input);
+  if (!parsed.success) return { ok: false };
+  const f = parsed.data;
+  const supabase = await createClient();
+  const { data, error } = await supabase.rpc("create_invoice", {
+    p_org: f.orgId,
+    p_kind: f.kind,
+    p_description: f.description,
+    p_net_cents: f.netCents,
+    p_allow_stripe: f.allowStripe,
+    p_allow_bank: f.allowBank,
+  });
+  if (error || !data) {
+    console.warn("createInvoice:", error?.code, error?.message);
+    return { ok: false };
+  }
+  revalidatePath("/admin", "layout");
+  return { ok: true, number: data as string };
+}
+
+/** "ALS BEZAHLT ✓" once the transfer has arrived. */
+export async function confirmTransfer(invoiceId: string): Promise<{ ok: boolean }> {
+  await requireStaff("finanzen");
+  if (!uuid.safeParse(invoiceId).success) return { ok: false };
+  const supabase = await createClient();
+  const { error } = await supabase.rpc("confirm_transfer", { p_invoice: invoiceId });
+  if (error) console.warn("confirmTransfer:", error.code, error.message);
+  revalidatePath("/admin", "layout");
+  return { ok: !error };
+}
