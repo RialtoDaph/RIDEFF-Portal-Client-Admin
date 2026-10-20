@@ -11,7 +11,7 @@ export async function GET(_req: Request, ctx: RouteContext<"/rechnungen/[nr]/pdf
   const supabase = await createClient();
   const { data: iv } = await supabase
     .from("invoices")
-    .select("number, issued_on, service_from, service_to, due_on, description, net_cents, vat_cents, gross_cents, status, paid_at, organizations(name, contact_name, street, postal_code, city, country)")
+    .select("number, issued_on, service_from, service_to, due_on, description, net_cents, vat_rate, vat_cents, gross_cents, status, paid_at, organizations(name, contact_name, street, postal_code, city, country)")
     .eq("number", nr)
     .maybeSingle();
   if (!iv) return new Response(null, { status: 404 });
@@ -25,6 +25,7 @@ export async function GET(_req: Request, ctx: RouteContext<"/rechnungen/[nr]/pdf
     dueOn: iv.due_on,
     description: pick(iv.description, "de"),
     netCents: iv.net_cents,
+    vatRate: Number(iv.vat_rate),
     vatCents: iv.vat_cents,
     grossCents: iv.gross_cents,
     status: iv.status,

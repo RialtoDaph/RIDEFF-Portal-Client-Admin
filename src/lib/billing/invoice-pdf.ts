@@ -19,8 +19,11 @@ const L = {
   to: "An",
   item: "Posten",
   net: "Betrag netto",
+  amount: "Betrag",
   subtotal: "Zwischensumme",
-  vat: "MwSt. 19 %",
+  vat: (rate: number) => `MwSt. ${rate.toLocaleString("de-DE")} %`,
+  // PROPOSED: Kleinunternehmer invoices (vat_rate 0) carry no VAT line, only this note.
+  smallBusiness: "Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.",
   total: "Gesamt",
   serviceDate: "Leistungsdatum:",
   servicePeriod: "Leistungszeitraum:",
@@ -38,6 +41,7 @@ export type InvoicePdfData = {
   dueOn: string | null;
   description: string;
   netCents: number;
+  vatRate: number;
   vatCents: number;
   grossCents: number;
   status: "open" | "announced" | "paid" | "overdue";
@@ -106,7 +110,7 @@ export async function buildInvoicePdf(d: InvoicePdfData): Promise<Uint8Array> {
   text(`${L.invoice} ${d.number}`, X, 18, bold);
   y -= 34;
   text(L.item, X, 9, bold, MUTED);
-  right(L.net, 9, bold, MUTED);
+  right(d.vatRate > 0 ? L.net : L.amount, 9, bold, MUTED);
   y -= 10;
   rule();
   y -= 18;
@@ -115,11 +119,14 @@ export async function buildInvoicePdf(d: InvoicePdfData): Promise<Uint8Array> {
   y -= 12;
   rule();
 
-  const totals: [string, string, PDFFont, number][] = [
-    [L.subtotal, eur(d.netCents), regular, 10],
-    [L.vat, eur(d.vatCents), regular, 10],
-    [L.total, eur(d.grossCents), bold, 12],
-  ];
+  const totals: [string, string, PDFFont, number][] =
+    d.vatRate > 0
+      ? [
+          [L.subtotal, eur(d.netCents), regular, 10],
+          [L.vat(d.vatRate), eur(d.vatCents), regular, 10],
+          [L.total, eur(d.grossCents), bold, 12],
+        ]
+      : [[L.total, eur(d.grossCents), bold, 12]];
   y -= 22;
   for (const [k, v, f, s] of totals) {
     text(k, 330, s, f);
@@ -127,6 +134,10 @@ export async function buildInvoicePdf(d: InvoicePdfData): Promise<Uint8Array> {
     y -= s + 8;
   }
 
+  if (d.vatRate === 0) {
+    y -= 4;
+    text(L.smallBusiness, X, 9, regular, MUTED);
+  }
   y -= 20;
   if (d.status === "paid" && d.paidAt) text(`${L.paidOn} ${de(d.paidAt)}`, X, 10, regular);
   else if (d.dueOn) text(`${L.dueBy} ${de(d.dueOn)}`, X, 10, regular);
