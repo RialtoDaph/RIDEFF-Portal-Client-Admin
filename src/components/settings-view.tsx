@@ -4,7 +4,7 @@ import { useId, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { LangSwitch } from "./lang-switch";
-import { inviteMember, removeMember, setEmailPref, setMemberRole, updateProfile } from "@/app/actions/settings";
+import { inviteMember, removeMember, setEmailPref, setMemberRole, setPassword, updateProfile } from "@/app/actions/settings";
 import type { PrefGroup } from "@/lib/settings/prefs";
 
 export type TeamMember = { userId: string; name: string; email: string; role: "inhaber" | "mitarbeiter"; me: boolean };
@@ -31,6 +31,7 @@ export function SettingsView(props: {
       <div className="grid grid-cols-1 content-start gap-[14px] wide:grid-cols-2">
         <Profile name={props.name} email={props.email} />
         <Prefs groups={props.groups} />
+        <Password />
         {props.team && <Team members={props.team} />}
         {props.children}
       </div>
@@ -79,6 +80,42 @@ function Profile({ name: initial, email }: { name: string; email: string }) {
         <span className={label}>{t("profile.language")}</span>
         <LangSwitch />
       </div>
+      <span role="status" aria-live="polite" className={`font-mono text-[11px] ${msg?.ok ? "text-success-ink" : "text-danger"} ${msg ? "" : "sr-only"}`}>{msg?.text}</span>
+    </section>
+  );
+}
+
+function Password() {
+  const t = useTranslations();
+  const uid = useId();
+  const [value, setValue] = useState("");
+  const [msg, setMsg] = useState<{ ok: boolean; text: string } | null>(null);
+  const [pending, start] = useTransition();
+  const valid = value.length >= 10;
+  return (
+    <section aria-labelledby={`${uid}-h`} className={card}>
+      <h2 id={`${uid}-h`} className={`${label} m-0 font-normal`}>{t("settings.password")}</h2>
+      <p className="m-0 text-[14px] leading-[1.5] text-muted">{t("settings.passwordHint")}</p>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          if (!valid || pending) return;
+          start(async () => {
+            const r = await setPassword(value);
+            setMsg({ ok: r.ok, text: t(r.ok ? "settings.passwordSaved" : "settings.failed") });
+            if (r.ok) setValue("");
+          });
+        }}
+        className="flex flex-col gap-[6px]"
+      >
+        <label htmlFor={`${uid}-p`} className={label}>{t("settings.newPassword")}</label>
+        <div className="flex gap-2">
+          <input id={`${uid}-p`} type="password" value={value} onChange={(e) => setValue(e.target.value)} autoComplete="new-password" className={field} />
+          <button type="submit" disabled={!valid || pending} className={`${pill} flex-none border-none bg-brand text-white hover:bg-brand-hover disabled:cursor-not-allowed disabled:bg-approval-line`}>
+            {t("settings.save")}
+          </button>
+        </div>
+      </form>
       <span role="status" aria-live="polite" className={`font-mono text-[11px] ${msg?.ok ? "text-success-ink" : "text-danger"} ${msg ? "" : "sr-only"}`}>{msg?.text}</span>
     </section>
   );

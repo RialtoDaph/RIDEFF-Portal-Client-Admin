@@ -101,6 +101,8 @@ const newClient = z.object({
   packageKey: z.enum(["core", "growth", "whole_system"]),
   sendWelcome: z.boolean(),
   orgId: uuid.nullable(),
+  // optional start password for the contact (sign-in without the email code)
+  password: z.union([z.string().min(10).max(200), z.literal("")]).optional(),
 });
 
 export type CreateClientResult = { ok: true; orgId: string; sent: boolean } | { ok: false };
@@ -120,12 +122,18 @@ export async function createClientAction(input: z.input<typeof newClient>): Prom
   const { data: existing } = await admin.from("profiles").select("id").eq("email", f.email).maybeSingle();
   let userId = existing?.id as string | undefined;
   if (!userId) {
-    const { data, error } = await admin.auth.admin.createUser({ email: f.email, email_confirm: true, user_metadata: { full_name: f.contact } });
+    const { data, error } = await admin.auth.admin.createUser({
+      email: f.email, email_confirm: true, user_metadata: { full_name: f.contact }, ...(f.password ? { password: f.password } : {}),
+    });
     if (error || !data.user) {
       console.error("createClient user:", error?.message);
       return { ok: false };
     }
     userId = data.user.id;
+  } else if (f.password) {
+    // never for a team login
+    const { data: staff } = await admin.from("staff").select("user_id").eq("user_id", userId).maybeSingle();
+    if (!staff) await admin.auth.admin.updateUserById(userId, { password: f.password });
   }
 
   const supabase = await createClient();

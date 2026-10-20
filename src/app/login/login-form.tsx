@@ -2,14 +2,15 @@
 
 import { useState, useTransition } from "react";
 import { useTranslations } from "next-intl";
-import { sendCode, verifyCode, type LoginResult } from "./actions";
+import { sendCode, signInWithPassword, verifyCode, type LoginResult } from "./actions";
 import { codeInput, fieldInput, fieldLabel, FormError, primaryButton } from "./fields";
 
 const EMAIL = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 
 export function LoginForm({ initialError = null }: { initialError?: string | null }) {
   const t = useTranslations("auth");
-  const [step, setStep] = useState<1 | 2>(1);
+  const [step, setStep] = useState<1 | 2 | "password">(1);
+  const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [code, setCode] = useState("");
   const [error, setError] = useState<string | null>(initialError);
@@ -41,9 +42,47 @@ export function LoginForm({ initialError = null }: { initialError?: string | nul
     });
   };
 
+  const submitPassword = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!EMAIL.test(email.trim())) return setError(t("errEmail"));
+    if (!password) return setError(t("errPassword"));
+    start(async () => {
+      // on success the action redirects
+      const r = await signInWithPassword(email, password);
+      if (r) fail(r);
+    });
+  };
+
+  const switchLink = "touch-target cursor-pointer self-start border-none bg-transparent p-0 text-[13px] text-accent hover:text-brand";
+
   return (
     <>
-      {step === 1 ? (
+      {step === "password" ? (
+        <form onSubmit={submitPassword} className="flex flex-col gap-3" noValidate>
+          <label htmlFor="login-email" className={fieldLabel}>{t("email")}</label>
+          <input
+            id="login-email"
+            type="email"
+            autoComplete="email"
+            autoFocus
+            value={email}
+            onChange={(e) => { setEmail(e.target.value); setError(null); }}
+            placeholder={t("emailPlaceholder")}
+            className={fieldInput}
+          />
+          <label htmlFor="login-password" className={fieldLabel}>{t("password")}</label>
+          <input
+            id="login-password"
+            type="password"
+            autoComplete="current-password"
+            value={password}
+            onChange={(e) => { setPassword(e.target.value); setError(null); }}
+            className={fieldInput}
+          />
+          <button type="submit" disabled={pending} className={primaryButton}>{t("signIn")}</button>
+          <button type="button" onClick={() => { setStep(1); setError(null); }} className={switchLink}>{t("withCode")}</button>
+        </form>
+      ) : step === 1 ? (
         <form onSubmit={submitEmail} className="flex flex-col gap-3" noValidate>
           <label htmlFor="login-email" className={fieldLabel}>{t("email")}</label>
           <input
@@ -57,6 +96,7 @@ export function LoginForm({ initialError = null }: { initialError?: string | nul
             className={fieldInput}
           />
           <button type="submit" disabled={pending} className={primaryButton}>{t("sendCode")}</button>
+          <button type="button" onClick={() => { setStep("password"); setError(null); }} className={switchLink}>{t("withPassword")}</button>
         </form>
       ) : (
         <form onSubmit={submitCode} className="flex flex-col gap-3" noValidate>
