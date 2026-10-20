@@ -176,6 +176,9 @@
     "passwordHint": "Damit können Sie sich auch ohne Code per E-Mail anmelden. Mindestens 10 Zeichen.",
     "newPassword": "NEUES PASSWORT",
     "passwordSaved": "PASSWORT GESPEICHERT ✓",
+    "staff2fa": "2FA für das Team verpflichtend",
+    "staff2faOn": "AN · NACH DEM PASSWORT ODER CODE FRAGT DAS PORTAL NACH DEM CODE AUS DER APP",
+    "staff2faOff": "AUS · ANMELDUNG OHNE APP-CODE. BITTE WIEDER EINSCHALTEN, SOBALD KUNDEN IM PORTAL SIND",
     "notifications": "E-MAIL-BENACHRICHTIGUNGEN",
     "notifHint": "Im Portal sehen Sie alles unter der Glocke. Hier legen Sie fest, was zusätzlich per E-Mail kommt.",
     "pref": {
