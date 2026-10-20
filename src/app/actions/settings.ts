@@ -35,6 +35,17 @@ export async function setEmailPref(group: PrefGroup, on: boolean): Promise<{ ok:
   return { ok: !error };
 }
 
+/** Password for signing in without the email code (min. 10 characters). */
+export async function setPassword(password: string): Promise<{ ok: boolean }> {
+  const session = await getSession();
+  if (!session || typeof password !== "string" || password.length < 10 || password.length > 200) return { ok: false };
+  if (session.staffRole && session.aal !== "aal2") return { ok: false };
+  const supabase = await createClient();
+  const { error } = await supabase.auth.updateUser({ password });
+  if (error) console.warn("setPassword:", error.code ?? error.message);
+  return { ok: !error };
+}
+
 // ── client team (Inhaber only; RLS: never yourself) ──────────────────
 const role = z.enum(["inhaber", "mitarbeiter"]);
 

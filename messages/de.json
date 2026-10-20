@@ -38,6 +38,10 @@
     "footer": "GESCHÜTZT · DATEN IN DER EU",
     "errCodeWrong": "DER CODE STIMMT NICHT ODER IST ABGELAUFEN.",
     "errRateLimit": "ZU VIELE VERSUCHE. BITTE KURZ WARTEN.",
+    "password": "PASSWORT",
+    "withPassword": "Mit Passwort anmelden",
+    "withCode": "Mit Code per E-Mail anmelden",
+    "errPassword": "E-MAIL ODER PASSWORT STIMMT NICHT.",
     "errLink": "DER LINK IST ABGELAUFEN ODER WURDE IN EINEM ANDEREN BROWSER GEÖFFNET. BITTE NEU ANFORDERN.",
     "mfa": {
       "challengeLabel": "6-STELLIGER CODE"
@@ -168,6 +172,10 @@
     "save": "SPEICHERN",
     "saved": "GESPEICHERT ✓",
     "failed": "SPEICHERN FEHLGESCHLAGEN. BITTE NOCH EINMAL VERSUCHEN.",
+    "password": "PASSWORT",
+    "passwordHint": "Damit können Sie sich auch ohne Code per E-Mail anmelden. Mindestens 10 Zeichen.",
+    "newPassword": "NEUES PASSWORT",
+    "passwordSaved": "PASSWORT GESPEICHERT ✓",
     "notifications": "E-MAIL-BENACHRICHTIGUNGEN",
     "notifHint": "Im Portal sehen Sie alles unter der Glocke. Hier legen Sie fest, was zusätzlich per E-Mail kommt.",
     "pref": {
@@ -602,6 +610,8 @@
       "open": "KUNDE ÖFFNEN →",
       "more": "WEITEREN KUNDEN ANLEGEN"
     },
+    "password": "START-PASSWORT (OPTIONAL)",
+    "passwordHint": "MIND. 10 ZEICHEN · FÜR DIE ANMELDUNG OHNE E-MAIL-CODE · PERSÖNLICH WEITERGEBEN",
     "failed": "ANLEGEN FEHLGESCHLAGEN. BITTE NOCH EINMAL VERSUCHEN."
   },
   "inbox": {

@@ -7,7 +7,7 @@ import { LOCALE_COOKIE } from "@/i18n/config";
 import { createClient } from "@/lib/supabase/server";
 import { homeFor, loadSession } from "@/lib/auth/session";
 
-export type LoginResult = { ok: true } | { ok: false; error: "errEmail" | "errCode" | "errCodeWrong" | "errRateLimit" };
+export type LoginResult = { ok: true } | { ok: false; error: "errEmail" | "errCode" | "errCodeWrong" | "errRateLimit" | "errPassword" };
 
 const email = z.string().trim().toLowerCase().pipe(z.email());
 const code = z.string().regex(/^\d{6}$/);
@@ -40,12 +40,28 @@ export async function verifyCode(rawEmail: string, rawCode: string): Promise<Log
   const { error } = await supabase.auth.verifyOtp({ email: parsed.data, token: rawCode, type: "email" });
   if (error) return { ok: false, error: error.status === 429 ? "errRateLimit" : "errCodeWrong" };
 
+  return finishSignIn(supabase, "errCodeWrong");
+}
+
+/** Alternative while email delivery is limited: email and password (set in Einstellungen or by the team). */
+export async function signInWithPassword(rawEmail: string, password: string): Promise<LoginResult> {
+  const parsed = email.safeParse(rawEmail);
+  if (!parsed.success) return { ok: false, error: "errEmail" };
+  if (typeof password !== "string" || !password || password.length > 200) return { ok: false, error: "errPassword" };
+  const supabase = await createClient();
+  const { error } = await supabase.auth.signInWithPassword({ email: parsed.data, password });
+  if (error) return { ok: false, error: error.status === 429 ? "errRateLimit" : "errPassword" };
+  return finishSignIn(supabase, "errPassword");
+}
+
+/** Route by the role stored in the database; staff continue to 2FA. */
+async function finishSignIn(supabase: Awaited<ReturnType<typeof createClient>>, failure: "errCodeWrong" | "errPassword"): Promise<LoginResult> {
   const session = await loadSession(supabase);
   const home = session && homeFor(session);
   if (!session || !home) {
     // A valid account without an organisation or staff role has nothing to see.
     await supabase.auth.signOut();
-    return { ok: false, error: "errCodeWrong" };
+    return { ok: false, error: failure };
   }
   (await cookies()).set(LOCALE_COOKIE, session.profile.locale, { path: "/", maxAge: 60 * 60 * 24 * 365, sameSite: "lax" });
   redirect(home);

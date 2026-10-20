@@ -23,10 +23,11 @@ export function NewClientForm({ packages, prefill, template, from }: { packages:
   const router = useRouter();
   const [f, setF] = useState(prefill);
   const [send, setSend] = useState(true);
+  const [password, setPassword] = useState("");
   const [done, setDone] = useState<{ orgId: string; company: string; email: string; sent: boolean } | null>(null);
   const [failed, setFailed] = useState(false);
   const [pending, start] = useTransition();
-  const valid = !!(f.company.trim() && f.contact.trim() && EMAIL.test(f.email.trim()));
+  const valid = !!(f.company.trim() && f.contact.trim() && EMAIL.test(f.email.trim())) && (!password || password.length >= 10);
   const set = (k: keyof Prefill) => (e: React.ChangeEvent<HTMLInputElement>) => setF((s) => ({ ...s, [k]: e.target.value }));
   const first = f.contact.trim().split(/\s+/)[0];
 
@@ -35,7 +36,7 @@ export function NewClientForm({ packages, prefill, template, from }: { packages:
     if (!valid || pending) return;
     setFailed(false);
     start(async () => {
-      const r = await createClientAction({ ...f, sendWelcome: send });
+      const r = await createClientAction({ ...f, sendWelcome: send, password });
       if (r.ok) setDone({ orgId: r.orgId, company: f.company.trim(), email: f.email.trim(), sent: r.sent });
       else setFailed(true);
     });
@@ -111,6 +112,11 @@ export function NewClientForm({ packages, prefill, template, from }: { packages:
                 );
               })}
             </div>
+          </div>
+          <div className="flex flex-col gap-[6px]">
+            <label htmlFor="nc-password" className={label}>{t("newClient.password")}</label>
+            <input id="nc-password" type="text" value={password} onChange={(e) => setPassword(e.target.value)} autoComplete="new-password" spellCheck={false} className={`${field} font-mono`} />
+            <span className="font-mono text-[10px] leading-[1.5] tracking-[0.08em] text-label">{t("newClient.passwordHint")}</span>
           </div>
           <span className="font-mono text-[10px] leading-[1.5] tracking-[0.08em] text-label">{t("newClient.roleNote")}</span>
           <button type="button" role="checkbox" aria-checked={send} onClick={() => setSend((v) => !v)} className="flex cursor-pointer items-center gap-3 border-none bg-transparent py-[6px] text-left text-[14px] text-ink">
