@@ -4,6 +4,7 @@ import { createClient } from "@/lib/supabase/server";
 import { groupOn, STAFF_GROUPS } from "@/lib/settings/prefs";
 import { SettingsView } from "@/components/settings-view";
 import { RecoveryCodes } from "@/components/recovery-codes";
+import { Staff2faSwitch } from "@/components/admin/staff-2fa-switch";
 
 export default async function StaffSettings() {
   const session = await requireStaff();
@@ -23,6 +24,7 @@ export default async function StaffSettings() {
         <h2 className="m-0 font-mono text-[10px] font-normal tracking-[0.12em] text-muted">{t("settings.security")}</h2>
         <span className="text-[15px]">{t("settings.codesLeft", { count: Number(left ?? 0) })}</span>
         <RecoveryCodes auto={false} email={session.profile.email} />
+        {session.staffRole === "owner" && <Staff2faSwitch required={session.staff2fa} />}
       </section>
     </SettingsView>
   );

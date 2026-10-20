@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getTranslations } from "next-intl/server";
-import { getSession } from "@/lib/auth/session";
+import { getSession, staffVerified } from "@/lib/auth/session";
 import { createClient } from "@/lib/supabase/server";
 import { signOut } from "@/app/actions/auth";
 import { LoginShell } from "../login-shell";
@@ -13,7 +13,7 @@ export default async function TwoFactorPage() {
   const session = await getSession();
   if (!session) redirect("/login");
   if (!session.staffRole) redirect("/");
-  if (session.aal === "aal2") redirect("/admin");
+  if (staffVerified(session)) redirect("/admin");
 
   const supabase = await createClient();
   const { data } = await supabase.auth.mfa.listFactors();

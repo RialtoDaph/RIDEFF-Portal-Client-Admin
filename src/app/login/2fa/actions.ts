@@ -2,7 +2,7 @@
 
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
-import { getSession } from "@/lib/auth/session";
+import { getSession, staffVerified } from "@/lib/auth/session";
 
 export type Enrollment = { factorId: string; qr: string; secret: string };
 export type TotpResult = { ok: false; error: "errCode" | "errCodeWrong" | "errRateLimit" };
@@ -10,7 +10,7 @@ export type TotpResult = { ok: false; error: "errCode" | "errCodeWrong" | "errRa
 async function requireStaffAal1() {
   const session = await getSession();
   if (!session?.staffRole) redirect("/login");
-  if (session.aal === "aal2") redirect("/admin");
+  if (staffVerified(session)) redirect("/admin");
   return session;
 }
 

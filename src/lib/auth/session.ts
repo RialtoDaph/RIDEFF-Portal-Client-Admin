@@ -20,7 +20,14 @@ export type Session = {
   profile: { fullName: string; email: string; locale: Locale };
   staffRole: StaffRole | null;
   memberships: Membership[];
+  /** settings.require_staff_2fa (default on); the owner can switch it off for a while */
+  staff2fa: boolean;
 };
+
+/** Staff may enter /admin: TOTP verified, or 2FA switched off by the owner. */
+export function staffVerified(session: Session) {
+  return session.aal === "aal2" || !session.staff2fa;
+}
 
 /**
  * The signed-in user with roles read from the database (never from the URL or email).
@@ -34,13 +41,14 @@ export async function loadSession(supabase: SupabaseClient): Promise<Session | n
   if (error || !data?.claims?.sub) return null;
   const userId = data.claims.sub;
 
-  const [profile, staff, members] = await Promise.all([
+  const [profile, staff, members, twoFa] = await Promise.all([
     supabase.from("profiles").select("full_name, email, locale").eq("id", userId).maybeSingle(),
     supabase.from("staff").select("role").eq("user_id", userId).maybeSingle(),
     supabase
       .from("org_members")
       .select("role, organizations(id, name, slug, status)")
       .eq("user_id", userId),
+    supabase.from("settings").select("value").eq("key", "require_staff_2fa").maybeSingle(),
   ]);
 
   const p = profile.data;
@@ -56,12 +64,13 @@ export async function loadSession(supabase: SupabaseClient): Promise<Session | n
     memberships: ((members.data ?? []) as unknown as { role: MemberRole; organizations: Membership["org"] | null }[])
       .filter((m) => m.organizations)
       .map((m) => ({ role: m.role, org: m.organizations! })),
+    staff2fa: twoFa.data?.value !== false,
   };
 }
 
 /** Where a signed-in user belongs. Staff go through 2FA first. */
 export function homeFor(session: Session): string | null {
-  if (session.staffRole) return session.aal === "aal2" ? "/admin" : "/login/2fa";
+  if (session.staffRole) return staffVerified(session) ? "/admin" : "/login/2fa";
   if (session.memberships.length) return "/";
   return null;
 }
@@ -70,7 +79,7 @@ export const VIEW_AS_COOKIE = "rideff_view_as";
 
 /** "Als Kunde ansehen": a staff member's read-only view of one client (cookie "orgId.logId"). */
 async function viewAsMembership(session: Session): Promise<{ membership: Membership; logId: string } | null> {
-  if (!session.staffRole || session.aal !== "aal2" || session.staffRole === "finanzen") return null;
+  if (!session.staffRole || !staffVerified(session) || session.staffRole === "finanzen") return null;
   const raw = (await cookies()).get(VIEW_AS_COOKIE)?.value ?? "";
   const [orgId, logId] = raw.split(".");
   const uuid = /^[0-9a-f-]{36}$/;
@@ -106,7 +115,7 @@ export async function requireStaff(...roles: StaffRole[]): Promise<Session & { s
   const session = await getSession();
   if (!session) redirect("/login");
   if (!session.staffRole) redirect(homeFor(session) ?? "/login");
-  if (session.aal !== "aal2") redirect("/login/2fa");
+  if (!staffVerified(session)) redirect("/login/2fa");
   if (roles.length && session.staffRole !== "owner" && !roles.includes(session.staffRole)) notFound();
   return session as Session & { staffRole: StaffRole };
 }

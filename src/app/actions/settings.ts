@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
-import { getSession, requireClient } from "@/lib/auth/session";
+import { getSession, requireClient, requireStaff, staffVerified } from "@/lib/auth/session";
 import { fillTemplate, sendEmail } from "@/lib/email/send";
 import { PREF_GROUPS, type PrefGroup } from "@/lib/settings/prefs";
 
@@ -39,10 +39,20 @@ export async function setEmailPref(group: PrefGroup, on: boolean): Promise<{ ok:
 export async function setPassword(password: string): Promise<{ ok: boolean }> {
   const session = await getSession();
   if (!session || typeof password !== "string" || password.length < 10 || password.length > 200) return { ok: false };
-  if (session.staffRole && session.aal !== "aal2") return { ok: false };
+  if (session.staffRole && !staffVerified(session)) return { ok: false };
   const supabase = await createClient();
   const { error } = await supabase.auth.updateUser({ password });
   if (error) console.warn("setPassword:", error.code ?? error.message);
+  return { ok: !error };
+}
+
+/** Owner: make TOTP 2FA required or optional for the whole team. */
+export async function setStaff2fa(required: boolean): Promise<{ ok: boolean }> {
+  await requireStaff("owner");
+  if (typeof required !== "boolean") return { ok: false };
+  const supabase = await createClient();
+  const { error } = await supabase.from("settings").upsert({ key: "require_staff_2fa", value: required });
+  revalidatePath("/", "layout");
   return { ok: !error };
 }
 
